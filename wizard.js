@@ -11,8 +11,9 @@ function parse(data, course) {
     $('#courseTitle').text(course_data.title);
     $('#courseCredits').text("Credits: " + course_data.credits);
     $('#courseInfo').text(course_data.info);
-    $('#coursePrereqs').text(display_reqs(course_data.prereqs));
-    $('#courseCoreqs').text(display_reqs(course_data.coreqs));
+    $('#coursePrereqs').html(display_reqs(course_data.prereqs));
+    $('#courseCoreqs').html(display_reqs(course_data.coreqs));
+    $('#testBtn').html("<button>test</button>");
 }
 
 function display_reqs(r) {
@@ -23,7 +24,7 @@ function display_reqs(r) {
                 reqs += r[i].n_of + " of: "
             }
             for (var j = 0; j < r[i].courses.length; j++) {
-                reqs += r[i].courses[j] + " "
+                reqs += "<button>" + r[i].courses[j] + "</button>"
             };
             if (r[i].or !== null) {
                 reqs += " OR " + display_reqs(r[i].or)
