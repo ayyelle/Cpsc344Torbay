@@ -1,0 +1,195 @@
+{
+    "CPSC340": {
+        "title": "CPSC 340 Machine Learning and Data Mining",
+        "info": "Models of algorithms for dimensionality reduction, nonlinear regression, classification, clustering and unsupervised learning; applications to computer graphics, computer games, bio-informatics, information retrieval, e-commerce, databases, computer vision and artificial intelligence.",
+        "credits": 3,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH152",
+                    "MATH221",
+                    "MATH223"
+                ],
+                "or": null
+            },
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH200",
+                    "MATH217",
+                    "MATH226",
+                    "MATH253",
+                    "MATH263"
+                ],
+                "or": null
+            },
+            {
+                "n_of": "one",
+                "courses": [
+                    "STAT200",
+                    "STAT203",
+                    "STAT241",
+                    "STAT251",
+                    "MATH302",
+                    "STAT302",
+                    "MATH318",
+                    "BIO300"
+                ],
+                "or": null
+            },
+            {
+                "n_of": "one",
+                "courses": [
+                    "CPSC221"
+                ],
+                "or": [
+                    {
+                        "n_of": "all",
+                        "courses": [
+                            "CPSC260",
+                            "EECE320"
+                        ],
+                        "or": null
+                    },
+                    {
+                        "n_of": "one",
+                        "courses": [
+                            "CPSC210",
+                            "EECE210",
+                            "EECE309"
+                        ],
+                        "or": null
+                    }
+                ]
+            }
+        ],
+        "coreqs": null
+    },
+    "MATH152": {
+        "title": "MATH 152 Linear Systems",
+        "info": "2D and 3D geometry, vectors and matrices, eigenvalues and vibration, physical applications. Laboratories demonstrate computer solutions of large systems. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "prereqs": null,
+        "coreqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH101"
+                ],
+                "or": null
+            }
+        ]
+    },
+    "MATH200": {
+        "title": "MATH 200 Calculus III",
+        "info": "Analytic geometry in 2 and 3 dimensions, partial and directional derivatives, chain rule, maxima and minima, second derivative test, Lagrange multipliers, multiple integrals with applications. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH101",
+                    "MATH103",
+                    "MATH105",
+                    "MATH121",
+                    "SCIE001"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "STAT200": {
+        "title":"",
+        "info": "",
+        "credits": 3,
+        "prereqs": [
+            {
+            "n_of": "one",
+            "courses": [
+                "MATH101",
+                "MATH103",
+                "MATH105",
+                "MATH121",
+                "SCIE001"
+            ],
+            "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "CPSC260": {
+        "title": "CPSC 260 Data Structures and Algorithms for Computer Engineers",
+        "info": "Design and analysis of object-oriented programs, emphasizing data structures. Topics include: classes, interfaces, fundamental data structures, algorithmic complexity, basic debugging and testing techniques.",
+        "credits": 3,
+        "prereqs": [
+            {
+            "n_of": "one",
+            "courses": ["APSC160"],
+            "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "APSC160": {
+        "title":"APSC 160 Introduction to Computation in Engineering Design",
+        "info": "Analysis and simulation, laboratory data acquisition and processing, measurement interfaces, engineering tools, computer systems organization, programming languages. Credit will only be given for one of: APSC 160, CPSC 301, or EOSC 211. ",
+        "credits": 3,
+        "prereqs": null,
+        "coreqs": null
+    },
+    "CPSC210": {
+        "title":"CPSC 210 Software Construction",
+        "info": "Design, development, and analysis of robust software components. Topics such as software design, computational models, data structures, debugging, and testing. ",
+        "credits": 4,
+        "prereqs": [
+            {
+            "n_of": "one",
+            "courses": [
+                "CPSC110",
+                "CPSC260"
+            ],
+            "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "MATH101": {
+        "title": "MATH 101 Integral Calculus with Applications to Physical Sciences and Engineering",
+        "info": "The definite integral, integration techniques, applications, modeling, infinite series. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH100",
+                    "MATH102",
+                    "MATH104",
+                    "MATH110",
+                    "MATH111",
+                    "MATH120",
+                    "MATH180",
+                    "MATH184"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "MATH100": {
+        "title": "MATH 100 Differential Calculus with Applications to Physical Sciences and Engineering",
+        "info": "Derivatives of elementary functions. Applications and modeling: graphing, optimization. Consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "High-school calculus"
+                ],
+                "alt": null
+            }
+        ],
+        "coreqs": null
+    }
+}
