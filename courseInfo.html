@@ -95,7 +95,7 @@
     </div>
     <!-- /.container-fluid -->
   </nav>
-  <div class="container">
+<div class="container">
   <div class="row">
     <div class="col-md-8 text-left">
       <ol class="breadcrumb">
@@ -114,6 +114,8 @@
 
   </ul>
 </div>
+
+<!-- Everything below this is the body -->
     </div>
     <div class="col-md-2">
       <div class="btn-group">
@@ -129,43 +131,52 @@
     </div>
   </div>
 </div>
-  <!-- Everything below this section is the body -->
   <div class="page-header">
     <h1>Student Service Centre <small>Course Schedule</small></h1>
   </div>
-  
-<h2>The University of British Columbia - Course Schedule</h2>
-Welcome to UBC's Course Schedule. On this site you will be able to browse courses, save them to a worklist, view them in a timetable and even register for them!
-<br><br>
-This page requires that you have <strong>Javascript</strong> enabled on your browser. To enable Javascript, click here.
-<br><br>
-<div class="alert alert-info" role="alert">Please note that the Course Schedule is subject to change. Please review your worklists prior to your registration date.</div>
+  <nav aria-label="Page navigation">
+    <ul class="pagination">
+      <li>
+        <a href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li><a href="#">A</a></li>
+      <li><a href="#">B</a></li>
+      <li><a href="#">C</a></li>
+      <li><a href="#">D</a></li>
+      <li><a href="#">E</a></li>
+      <li>
+        <a href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 
+  <div id="course">
+    <h3 id="courseTitle"></h3>
+    <strong><h4 id="courseCredits"></h4></strong>
+    <p id="courseInfo"></p>
+    <strong><h4>Pre-reqs:</h4></strong>
+    <div id="coursePrereqs"></div>
+    <strong><h4>Co-reqs:</h4></strong>
+    <div id="courseCoreqs"></div>
+    <div id="testBtn"></div>
+  </div>
 
-<strong>Registration Reminder</strong>: One-hour courses are actually only 50 minutes long and one-and-a-half-hour classes are 80 minutes long so you have time to get to your next class
-<br><br>
-<h2>Getting started:</h2>
-Using the drop-down box at the top of the page, <strong>select the campus and the session </strong> for which you wish to view courses.
-<br><br>
-<h4>Navigation Menu</h4>
-
-These services will allow you to browse through courses, standard timetables and specializations offered for the selected campus and session. You can also search for courses which meet various criteria as well as courses taught by specific instructors.
-<br><br>
-If you are logged in, you can view your program and registration information. You can add/drop and switch course sections, view your registered courses, timetable and booklist. You can also create worklists to facilitate the registration process.
-
-<h4>Help</h4>
-
-These links will help you navigate through the Course Schedule and its features.
-
-
-Watch these <strong>videos</strong> for step-by-step instructions 
-<br><br>
-Course Schedule Overview 
-<br>
-Worklist Overview
-<br> 
-Registration Overview
-  
+  <ul class="list-group">
+    <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
+    <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
+    <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
+    <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
+  </ul>
+  <div class="list-group">
+    <a href="#" class="list-group-item list-group-item-success">Dapibus ac facilisis in</a>
+    <a href="#" class="list-group-item list-group-item-info">Cras sit amet nibh libero</a>
+    <a href="#" class="list-group-item list-group-item-warning">Porta ac consectetur ac</a>
+    <a href="#" class="list-group-item list-group-item-danger">Vestibulum at eros</a>
+  </div>
 </body>
 
 </html>
