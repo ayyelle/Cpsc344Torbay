@@ -48,9 +48,6 @@
 
       </div>
 
-
-
-
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
@@ -154,7 +151,13 @@
     </ul>
   </nav>
 
+  <div id="wizard">
+    <button id="back" onclick="back()">back</button>
+    <button id="forward" onclick="forward()">next</button>
+  </div>
   <div id="course">
+    <h3>Course List</h3>
+    <ul id="courseList"></ul>
     <h3 id="courseTitle"></h3>
     <strong><h4 id="courseCredits"></h4></strong>
     <p id="courseInfo"></p>
@@ -162,7 +165,7 @@
     <div id="coursePrereqs"></div>
     <strong><h4>Co-reqs:</h4></strong>
     <div id="courseCoreqs"></div>
-    <div id="testBtn"></div>
+    <div id="dropdown"></div>
   </div>
 
   <ul class="list-group">
