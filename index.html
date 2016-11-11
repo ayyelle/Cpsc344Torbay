@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -31,7 +32,7 @@
   </style>
 
   <div id="header" style="color:white">
-    Student Service Centre</br>
+    Student Service Centre<br>
     <h4>Course Schedule</h4>
   </div>
   <nav class="navbar navbar-default">
@@ -123,7 +124,44 @@
   <ul class="dropdown-menu">
     <li><a href="#">2016 Summer</a></li>
     <li><a href="#">2016 Winter</a></li>
-
+  <div class="page-header">
+    <h1>Student Service Centre <small>Course Schedule</small></h1>
+  </div>
+  <nav aria-label="Page navigation">
+    <ul class="pagination">
+      <li>
+        <a href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li><a href="#">A</a></li>
+      <li><a href="#">B</a></li>
+      <li><a href="#">C</a></li>
+      <li><a href="#">D</a></li>
+      <li><a href="#">E</a></li>
+      <li>
+        <a href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div id="wizard">
+    <button id="back" onclick="back()">back</button>
+    <button id="forward" onclick="forward()">next</button>
+  </div>
+  <div id="course">
+    <h3>Course List</h3>
+    <ul id="courseList"></ul>
+    <h3 id="courseTitle"></h3>
+    <strong><h4 id="courseCredits"></h4></strong>
+    <p id="courseInfo"></p>
+    <strong><h4>Pre-reqs:</h4></strong>
+    <div id="coursePrereqs"></div>
+    <strong><h4>Co-reqs:</h4></strong>
+    <div id="courseCoreqs"></div>
+    <div id="dropdown"></div>
+  </div>
   </ul>
 </div>
     </div>
