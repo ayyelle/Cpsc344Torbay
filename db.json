@@ -101,8 +101,8 @@
         "coreqs": null
     },
     "STAT200": {
-        "title":"",
-        "info": "",
+        "title":"STAT 200 Elementary Statistics for Applications",
+        "info": "Classical, nonparametric, and robust inferences about means, variances, and analysis of variance, using computers. Emphasis on problem formulation, assumptions, and interpretation. See the Faculty of Science Credit Exclusion Lists: www.calendar.ubc.ca/vancouver/index.cfm?tree=12,215,410,414.",
         "credits": 3,
         "prereqs": [
             {
@@ -181,15 +181,7 @@
         "title": "MATH 100 Differential Calculus with Applications to Physical Sciences and Engineering",
         "info": "Derivatives of elementary functions. Applications and modeling: graphing, optimization. Consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
         "credits": 3,
-        "prereqs": [
-            {
-                "n_of": "one",
-                "courses": [
-                    "High-school calculus"
-                ],
-                "alt": null
-            }
-        ],
+        "prereqs": null,
         "coreqs": null
     }
 }

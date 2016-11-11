@@ -13,18 +13,19 @@ function parse(data, course) {
     $('#courseInfo').text(course_data.info);
     $('#coursePrereqs').html(display_reqs(course_data.prereqs));
     $('#courseCoreqs').html(display_reqs(course_data.coreqs));
-    $('#testBtn').html("<button>test</button>");
 }
+var test2 = "test2";
 
 function display_reqs(r) {
     var reqs = "";
+    var test = "test";
     if (r !== null) {
         for (var i = 0; i < r.length; i++) {
             if (r[i].courses.length !== 1) {
                 reqs += r[i].n_of + " of: "
             }
             for (var j = 0; j < r[i].courses.length; j++) {
-                reqs += "<button>" + r[i].courses[j] + "</button>"
+                reqs += "<button onclick=goToCourse('" +  r[i].courses[j] + "')>" + r[i].courses[j] + "</button>";
             };
             if (r[i].or !== null) {
                 reqs += " OR " + display_reqs(r[i].or)
@@ -35,4 +36,9 @@ function display_reqs(r) {
         }
     }
     return (reqs);
+}
+
+function goToCourse(c) {
+    console.log("goto " + c);
+    parse(db,c);
 }
