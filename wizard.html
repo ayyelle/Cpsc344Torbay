@@ -28,6 +28,86 @@
     #header {
       background-color: #2F5D7C;
     }
+    
+    .whiteBtn {
+      background-color: white;
+      outline-style: none;
+      border-color: white;
+      border-radius: 5px;
+      border: 0;
+      margin: 0.2em;
+      width: 11em;
+      height: 3em;
+    }
+    
+    .whiteBtn:hover {
+      background-color: #dedfe0;
+      border: 0.15em solid white;
+    }
+    
+    .course-btn {
+      background-color: white;
+      border-style: solid;
+      border-width: 0.1em;
+      margin: 0;
+      border-color: lightgrey;
+      margin: 0.2em;
+      width: 8em;
+      height: 2em;
+    }
+    
+    .course-btn:hover {
+      background-color: #dedfe0;
+      border: 0.15em solid white;
+    }
+    
+    .title-btn {
+      background-color: white;
+      border-style: solid;
+      border-width: 0.1em;
+      margin: 0;
+      border-color: lightgrey;
+      margin: 0.2em;
+      width: 8em;
+    }
+    
+    .title-btn:hover {
+      background-color: #F0F0F0;
+    }
+    
+    .title-btn:active {
+      background-color: #F0F0F0;
+      border-style: solid;
+      border-width: 0.1em;
+    }
+    
+    .dropdown-menu {
+      width: 11em;
+      height: auto;
+    }
+    
+    .dropdown {
+      text-align: center;
+    }
+    
+    .center-dropdown {
+      left: 50%;
+      right: auto;
+      text-align: center;
+      transform: translate(-50%, 0);
+    }
+    
+    .wizard-header {
+      text-align: center;
+    }
+    
+    .centered {
+      text-align: center;
+    }
+    
+    .btn-success {
+      border: 0;
+    }
   </style>
 
   <div id="header" style="color:white">
@@ -47,10 +127,6 @@
       </button>
 
       </div>
-
-
-
-
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
@@ -79,17 +155,14 @@
               <li><a href="#">Glossary</a></li>
               <li><a href="#">Course Planning - Vancouver</a></li>
               <li><a href="#">Course Planning - Okanagan</a></li>
-
             </ul>
           </li>
           <li>
             <a href="wizard.html" class="dropdown-toggle">Planner</a>
           </li>
-
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Login</a></li>
-
         </ul>
       </div>
       <!-- /.navbar-collapse -->
@@ -130,7 +203,6 @@
       </div>
     </div>
   </div>
-
   <!-- Everything below this is the body -->
 
   <div class="container">
@@ -140,14 +212,20 @@
           <div class="panel-heading">
             <h3 class="panel-title">Wizard</h3>
           </div>
+          <br>
+          <div class="centered"><button class="btn btn-lg title-btn" onclick=goToCourse(currentCourse)>CPSC 340</button></div>
           <div class="panel-body">
             <!-- Start jumbotron -->
             <div class="jumbotron">
-              <h1>Hello, world!</h1>
-              <p>...</p>
-              <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+              <div id="samtest"></div>
+              <ul class="nav">
+                <li class="dropdown" id="dropdown">
+                  <button class="dropdown-toggle" data-toggle="dropdown"></button>
+                </li>
+              </ul>
             </div>
             <!-- End jumbotron -->
+            <div class="centered"><button class="btn-success btn-lg" onclick="addToPlan()">Add To Plan</button></div>
           </div>
         </div>
       </div>
@@ -160,12 +238,15 @@
           <!-- Start carousel -->
           <div class="panel-body">
             <!-- Start list -->
-            <img src="https://s-media-cache-ak0.pinimg.com/564x/d3/eb/69/d3eb69c0577a41d102496888fffb2e78.jpg" style="width: 80%;,height:80%"
-            />
-            <a href="#" class="list-group-item">Stupid </a>
-            <a href="#" class="list-group-item">Windows 10 </a>
-            <a href="#" class="list-group-item">Updates</a>
-
+            <div id="course">
+              <h3 id="courseTitle"></h3>
+              <strong><h4 id="courseCredits"></h4></strong>
+              <p id="courseInfo"></p>
+              <strong><h4>Pre-reqs:</h4></strong>
+              <div id="coursePrereqs"></div>
+              <strong><h4>Co-reqs:</h4></strong>
+              <div id="courseCoreqs"></div>
+            </div>
           </div>
           <!-- End List -->
 
@@ -180,11 +261,7 @@
           </div>
           <div class="panel-body">
             <!-- Start list -->
-            <div class="list-group">
-              <a href="#" class="list-group-item">Course 2</a>
-              <a href="#" class="list-group-item">Course 3</a>
-              <a href="#" class="list-group-item">Course 4</a>
-              <a href="#" class="list-group-item">Course 5</a>
+            <div class="list-group" id="courseList">
             </div>
             <!-- End List -->
           </div>
