@@ -94,10 +94,6 @@ function goToCourse(c) {
     }
 }
 
-function navigate(c) {
-    parse(db, c);
-}
-
 function addCourse(c) {
     courseSet[c] = true;
     sortCourses();
@@ -114,6 +110,7 @@ function nextPR() {
 }
 
 function sortCourses() {
+    //TODO: finish sorting algorithym 
     orderedCourseList = [];
     for (var course in courseSet) {
         orderedCourseList.push(course);
@@ -143,8 +140,13 @@ function getCourseList() {
     return list;
 }
 
-function newCourseBtn(course, id) {
-    return "<button class='course-btn' onmouseover=goToCourse('" + course + "') onclick=selectCourse('" + course + "','" + id + "')>" + course + "</button>";
+function newCourseBtn(course, id, cl) {
+    var rtn = "<button class='course-btn " + cl + "' onmouseover=goToCourse('" + course + "') onclick=selectCourse('" + course + "','" + id + "')" 
+    if (cl === "alt_b"){
+        rtn += " disabled='true'";
+    }
+    rtn += ">" + course + "</button>";
+    return rtn;
 }
 
 function selectCourse(course, id) {
@@ -163,6 +165,7 @@ function addToPlan() {
 }
 
 function dropdowns(r, or) {
+    //create dropdowns and course buttons for prereq selections
     var dd_html = "";
     for (var i = 0; i < r.length; i++) {
         dd_html += dropdown(r, i, or);
@@ -171,13 +174,14 @@ function dropdowns(r, or) {
 }
 
 function dropdown(r, n, or) {
+    //create dropdown for prereq selection
     var pr_id = "prdrop" + n;
     var rtn = ""
     if (r[n].or !== null) {
         rtn = orDropDowns(r, n, pr_id);
     }
     else if (r[n].n_of === "one") {
-        rtn += "<div class='dropdown'><button onmouseover=ddPreviewCourse('" + pr_id + "') class='whiteBtn' type='button' data-toggle='dropdown'"
+        rtn += "<div class='dropdown'><button onmouseover=ddPreviewCourse('" + pr_id + "') class='whiteBtn alt_b' type='button' data-toggle='dropdown'"
         if (or) {
             rtn += "id='" + pr_id + "b' disabled='true'>";
         } else {
@@ -186,14 +190,14 @@ function dropdown(r, n, or) {
         rtn += "Choose One <span class='caret'></span>"
             + "</button><ul class='dropdown-menu center-dropdown'>"
         for (var i = 0; i < r[n].courses.length; i++) {
-            rtn += "<li>" + newCourseBtn(r[n].courses[i], pr_id) + "</li>";
+            rtn += "<li>" + newCourseBtn(r[n].courses[i], pr_id, "default") + "</li>";
         }
         rtn += "</ul></div>"
     }
     else if (r[n].n_of = "all") {
         rtn += "</ul>"
         for (var i = 0; i < r[n].courses.length; i++) {
-            rtn += "<li>" + newCourseBtn(r[n].courses[i], pr_id) + "</li>";
+            rtn += "<li>" + newCourseBtn(r[n].courses[i], pr_id, "alt_b") + "</li>";
         }
         rtn += "</ul>"
     }
@@ -201,25 +205,25 @@ function dropdown(r, n, or) {
 }
 
 function orDropDowns(r, n, id) {
+    //create dropdowns and course buttons for "OR" prereq selection
     var id_b = "prdrop1b"
-    alert(id + " " + id_b)
-    var rtn = "<div class='radio'><label><input type='radio' name='optradio' onclick=enable('" + id + "','prdrop1b')>A</label></div>"
-        + "<div class='dropdown'><button disabled='true' onmouseover=ddPreviewCourse('" + id + "') class='whiteBtn' type='button' data-toggle='dropdown'"
+    var rtn = "<div class='radio'><label><input type='radio' name='optradio' onclick=enable('default','alt_b')>A</label></div>"
+        + "<div class='dropdown'><button disabled='true' onmouseover=ddPreviewCourse('" + id + "') class='whiteBtn default' type='button' data-toggle='dropdown'"
         + "id='" + id + "'>"
         + "Choose One <span class='caret'></span>"
         + "</button><ul class='dropdown-menu center-dropdown'>"
     for (var i = 0; i < r[n].courses.length; i++) {
-        rtn += "<li>" + newCourseBtn(r[n].courses[i], id) + "</li>";
+        rtn += "<li>" + newCourseBtn(r[n].courses[i], id, "alt_b") + "</li>";
     }
     rtn += "</ul></div>"
-        + "<div class='radio'><label><input type='radio' onclick=enable('prdrop1b','" + id + "') name='optradio'>B</label></div>"
+        + "<div class='radio'><label><input type='radio' onclick=enable('alt_b','default') name='optradio'>B</label></div>"
         + dropdowns(r[n].or, true)
     return rtn;
 }
 
 function enable(en,dis) {
-    $('#' + en).prop("disabled", false);
-    $('#' + dis).prop("disabled", true);
+    $('.' + en).prop("disabled", false);
+    $('.' + dis).prop("disabled", true);
 }
 
 function ddPreviewCourse(id) {
