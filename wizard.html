@@ -84,7 +84,7 @@
     
     .dropdown-menu {
       border: 0;
-      top: 3.2em;
+      top: 3.0em;
       width: 11em;
       height: auto;
     }
@@ -220,12 +220,18 @@
           <div class="panel-body">
             <!-- Start jumbotron -->
             <div class="jumbotron">
-              <div id="samtest"></div>
-              <ul class="nav">
-                <li class="dropdown" id="dropdown">
-                  <button class="dropdown-toggle" data-toggle="dropdown"></button>
-                </li>
-              </ul>
+              <div id="wizard_instructions" class="centered"></div>
+              <div class="radio">
+                <label><input type="radio" onclick="alert('A')" name="optradio">A</label>
+                <ul class="nav">
+                  <li class="dropdown" id="dropdown">
+                    <button class="dropdown-toggle" disabled="true" data-toggle="dropdown"></button>
+                  </li>
+                </ul>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="optradio">B</label>
+              </div>
             </div>
             <!-- End jumbotron -->
             <div class="centered"><button class="btn-success btn-lg" onclick="addToPlan()">Add To Plan</button></div>
@@ -245,9 +251,9 @@
               <h3 id="courseTitle"></h3>
               <strong><h4 id="courseCredits"></h4></strong>
               <p id="courseInfo"></p>
-              <strong><h4>Pre-reqs:</h4></strong>
+              <h4>Pre-reqs:</h4>
               <div id="coursePrereqs"></div>
-              <strong><h4>Co-reqs:</h4></strong>
+              <h4>Co-reqs:</h4>
               <div id="courseCoreqs"></div>
             </div>
           </div>

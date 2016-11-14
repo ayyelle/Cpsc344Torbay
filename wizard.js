@@ -4,6 +4,7 @@ var orderedCourseList = [];
 var wizardHistory = ["CPSC340"];
 var page = 0;
 var currentCourse = "CPSC340";
+var currentPR = 1;
 var toAdd = [];
 
 $(document).ready(function () {
@@ -11,7 +12,8 @@ $(document).ready(function () {
         db = data;
         parse(db, "CPSC340");
         if (data[currentCourse].prereqs !== null) {
-            $("#dropdown").html(dropdowns(data[currentCourse].prereqs));
+            updateInstructions();
+            $("#dropdown").html(dropdown(data[currentCourse].prereqs, 3));
         } else {
             $("#dropdown").html("<br>");
         }
@@ -19,6 +21,10 @@ $(document).ready(function () {
         updateCourseList();
     });
 });
+
+function updateInstructions() {
+    $("#wizard_instructions").html("<p>Pre-reqs " + currentPR + "/" + db[currentCourse].prereqs.length + "</p>");
+}
 
 function parse(data, course) {
     if (course !== null) {
@@ -32,8 +38,8 @@ function parse(data, course) {
         $('#courseTitle').text("Not Found");
         $('#courseCredits').text("Credits: N/A");
         $('#courseInfo').text("Sorry! This course is not in the database");
-        $('#coursePrereqs').html("");
-        $('#courseCoreqs').html("");
+        $('#coursePrereqs').html("N/A");
+        $('#courseCoreqs').html("N/A");
     }
 }
 
@@ -57,24 +63,26 @@ function updateCourseList() {
 
 function display_reqs(r) {
     var reqs = "";
-
     if (r !== null) {
         for (var i = 0; i < r.length; i++) {
             if (r[i].courses.length !== 1) {
-                reqs += r[i].n_of + " of: "
+                reqs += r[i].n_of + " of: | "
+            } else {
+                reqs += " | ";
             }
             for (var j = 0; j < r[i].courses.length; j++) {
-                reqs += "<strong>" + r[i].courses[j] + "  </strong>";
+                reqs += "<strong>" + r[i].courses[j] + " | </strong>";
             };
             if (r[i].or !== null) {
                 reqs += " OR " + display_reqs(r[i].or)
             }
             if (i < r.length - 1) {
                 reqs += "<br>and "
-            };
+            }
         }
+    } else {
+        reqs = "none";
     }
-
     return (reqs);
 }
 
@@ -94,6 +102,15 @@ function addCourse(c) {
     courseSet[c] = true;
     sortCourses();
     updateCourseList();
+}
+
+function nextPR() {
+    if (currentPR < db[currentCourse].prereqs.length) {
+        currentPR++;
+    }
+    console.log("currentPR: " + currentPR);
+    $("#dropdown").html(dropdown(db[currentCourse].prereqs, (currentPR - 1)));
+    updateInstructions();
 }
 
 function sortCourses() {
@@ -127,7 +144,7 @@ function getCourseList() {
 }
 
 function newCourseBtn(course, id) {
-    return "<button class='course-btn' onmouseover=previewCourse('" + course + "') onclick=selectCourse('" + course + "','" + id + "')>" + course + "</button>";
+    return "<button class='course-btn' onmouseover=goToCourse('" + course + "') onclick=selectCourse('" + course + "','" + id + "')>" + course + "</button>";
 }
 
 function selectCourse(course, id) {
@@ -137,15 +154,12 @@ function selectCourse(course, id) {
     goToCourse(course);
 }
 
-function previewCourse(course) {
-    goToCourse(course);
-}
-
 function addToPlan() {
     var pr = db[currentCourse].prereqs;
     for (var i = 0; i < toAdd.length; i++) {
         addCourse(toAdd[i]);
     }
+    nextPR();
 }
 
 function dropdowns(r) {
@@ -153,7 +167,6 @@ function dropdowns(r) {
     for (var i = 0; i < r.length; i++) {
         dd_html += dropdown(r, i);
     }
-    console.log(JSON.stringify(dd_html));
     return dd_html;
 }
 

@@ -101,20 +101,20 @@
         "coreqs": null
     },
     "STAT200": {
-        "title":"STAT 200 Elementary Statistics for Applications",
+        "title": "STAT 200 Elementary Statistics for Applications",
         "info": "Classical, nonparametric, and robust inferences about means, variances, and analysis of variance, using computers. Emphasis on problem formulation, assumptions, and interpretation. See the Faculty of Science Credit Exclusion Lists: www.calendar.ubc.ca/vancouver/index.cfm?tree=12,215,410,414.",
         "credits": 3,
         "prereqs": [
             {
-            "n_of": "one",
-            "courses": [
-                "MATH101",
-                "MATH103",
-                "MATH105",
-                "MATH121",
-                "SCIE001"
-            ],
-            "or": null
+                "n_of": "one",
+                "courses": [
+                    "MATH101",
+                    "MATH103",
+                    "MATH105",
+                    "MATH121",
+                    "SCIE001"
+                ],
+                "or": null
             }
         ],
         "coreqs": null
@@ -125,35 +125,118 @@
         "credits": 3,
         "prereqs": [
             {
-            "n_of": "one",
-            "courses": ["APSC160"],
-            "or": null
+                "n_of": "one",
+                "courses": [
+                    "APSC160"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "MATH221": {
+        "title": "MATH 221 Matrix Algebra",
+        "info": "Systems of linear equations, operations on matrices, determinants, eigenvalues and eigenvectors, diagonalization of symmetric matrices. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH100",
+                    "MATH102",
+                    "MATH104",
+                    "MATH110",
+                    "MATH120",
+                    "MATH180",
+                    "MATH184"
+                ],
+                "or": [
+                    {
+                        "n_of": "one",
+                        "courses": [
+                            "MATH101",
+                            "MATH103",
+                            "MATH105",
+                            "MATH121",
+                            "SCIE001"
+                        ],
+                        "or": null
+                    }
+                ]
             }
         ],
         "coreqs": null
     },
     "APSC160": {
-        "title":"APSC 160 Introduction to Computation in Engineering Design",
+        "title": "APSC 160 Introduction to Computation in Engineering Design",
         "info": "Analysis and simulation, laboratory data acquisition and processing, measurement interfaces, engineering tools, computer systems organization, programming languages. Credit will only be given for one of: APSC 160, CPSC 301, or EOSC 211. ",
         "credits": 3,
         "prereqs": null,
         "coreqs": null
     },
     "CPSC210": {
-        "title":"CPSC 210 Software Construction",
+        "title": "CPSC 210 Software Construction",
         "info": "Design, development, and analysis of robust software components. Topics such as software design, computational models, data structures, debugging, and testing. ",
         "credits": 4,
         "prereqs": [
             {
-            "n_of": "one",
-            "courses": [
-                "CPSC110",
-                "CPSC260"
-            ],
-            "or": null
+                "n_of": "one",
+                "courses": [
+                    "CPSC110",
+                    "CPSC260"
+                ],
+                "or": null
             }
         ],
         "coreqs": null
+    },
+    "MATH217": {
+        "title": "MATH 217 Multivariable and Vector Calculus",
+        "info": "Partial differentiation, extreme values, multiple integration, vector fields, line and surface integrals, the divergence theorem, Green's and Stokes' theorems. Intended for students in Honours Physics and Engineering Physics. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 4,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "PHYS101",
+                    "PHYS107",
+                    "PHYS153",
+                    "SCIE001"
+                ],
+                "or": null
+            },
+            {
+                "n_of": "one",
+                "courses": [
+                    "PHYS102",
+                    "PHYS108",
+                    "PHYS153",
+                    "SCIE001"
+                ],
+                "or": null
+            },
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH101",
+                    "MATH103",
+                    "MATH105",
+                    "MATH121"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH152",
+                    "MATH221",
+                    "MATH223"
+                ],
+                "or": null
+            }
+        ]
     },
     "MATH101": {
         "title": "MATH 101 Integral Calculus with Applications to Physical Sciences and Engineering",
@@ -181,6 +264,70 @@
         "title": "MATH 100 Differential Calculus with Applications to Physical Sciences and Engineering",
         "info": "Derivatives of elementary functions. Applications and modeling: graphing, optimization. Consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
         "credits": 3,
+        "prereqs": null,
+        "coreqs": null
+    },
+    "PHYS101": {
+        "title": "PHYS 101 Energy and Waves",
+        "info": "Fluids, harmonic oscillator, travelling waves, standing waves, sound, and interference of light waves, including diffraction. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414 ",
+        "credits": 3,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "PHYS12",
+                    "PHYS100"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH100",
+                    "MATH102",
+                    "MATH104",
+                    "MATH110",
+                    "MATH120",
+                    "MATH180",
+                    "MATH184"
+                ],
+                "or": null
+            }
+        ]
+    },
+    "PHYS102": {
+        "title": "PHYS 102 Electricity, Light and Radiation",
+        "info": "Introduction to optics, electricity and magnetism, electric circuits, radioactivity, including biological applications. Please consult the Faculty of Science credit exclusion list: http://www.calendar.ubc.ca/vancouver/index.cfm?tree=12,215,410,414 ",
+        "credits": 3,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "PHYS101",
+                    "PHYS107"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH101",
+                    "MATH103",
+                    "MATH105",
+                    "MATH121"
+                ],
+                "or": null
+            }
+        ]
+    },
+    "CPSC110": {
+        "title": "CPSC 110 Computation, Programs, and Programming",
+        "info": "Fundamental program and computation structures. Introductory programming skills. Computation as a tool for information processing, simulation and modeling, and interacting with the world. ",
+        "credits": 4,
         "prereqs": null,
         "coreqs": null
     }
