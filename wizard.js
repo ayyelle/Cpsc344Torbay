@@ -201,8 +201,9 @@ function dropdown(r, n, or) {
 }
 
 function orDropDowns(r, n, id) {
-    var id_b = id + "b"
-    var rtn = "<div class='radio'><label><input type='radio' name='optradio' onclick=enable('" + id + "')>A</label></div>"
+    var id_b = "prdrop1b"
+    alert(id + " " + id_b)
+    var rtn = "<div class='radio'><label><input type='radio' name='optradio' onclick=enable('" + id + "','prdrop1b')>A</label></div>"
         + "<div class='dropdown'><button disabled='true' onmouseover=ddPreviewCourse('" + id + "') class='whiteBtn' type='button' data-toggle='dropdown'"
         + "id='" + id + "'>"
         + "Choose One <span class='caret'></span>"
@@ -211,13 +212,14 @@ function orDropDowns(r, n, id) {
         rtn += "<li>" + newCourseBtn(r[n].courses[i], id) + "</li>";
     }
     rtn += "</ul></div>"
-        + "<div class='radio'><label><input type='radio' onclick=enable('prdrop1b') name='optradio'>B</label></div>"
+        + "<div class='radio'><label><input type='radio' onclick=enable('prdrop1b','" + id + "') name='optradio'>B</label></div>"
         + dropdowns(r[n].or, true)
     return rtn;
 }
 
-function enable(btn_id) {
-    $('#' + btn_id).prop("disabled", false);
+function enable(en,dis) {
+    $('#' + en).prop("disabled", false);
+    $('#' + dis).prop("disabled", true);
 }
 
 function ddPreviewCourse(id) {
