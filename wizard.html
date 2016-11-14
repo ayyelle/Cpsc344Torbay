@@ -6,6 +6,7 @@
   <!-- Latest compiled and minified CSS -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
 
@@ -16,9 +17,13 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
   <script src="wizard.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap-wizard/1.2/jquery.bootstrap.wizard.min.js"></script>
 </head>
 
 <body>
@@ -28,6 +33,7 @@
     #header {
       background-color: #2F5D7C;
     }
+   
   </style>
 
   <div id="header" style="color:white">
@@ -142,11 +148,88 @@
           </div>
           <div class="panel-body">
             <!-- Start jumbotron -->
-            <div class="jumbotron">
-              <h1>Hello, world!</h1>
-              <p>...</p>
-              <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-            </div>
+           
+<div id="page">
+  <div id="rootwizard">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+        <div>CPSC 340
+</div>
+          <ul>
+            <li><a href="#tab1" data-toggle="tab"></a></li>
+            <li><a href="#tab2" data-toggle="tab"></a></li>
+            <li><a href="#tab3" data-toggle="tab"></a></li>
+            <li><a href="#tab4" data-toggle="tab"></a></li>
+            <li><a href="#tab5" data-toggle="tab"></a></li>
+            <li><a href="#tab6" data-toggle="tab"></a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="tab-content">
+      <div class="tab-pane" id="tab1">
+       <form action="">
+ <div class="form-group">
+    <label for="exampleSelect1">One of</label>
+    <select class="form-control" id="exampleSelect1">
+      <option>Math 152</option>
+      <option>Math 221</option>
+      <option>Math 223</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleSelect2">Example select</label>
+    <select class="form-control" id="exampleSelect2">
+      <option>Math 200</option>
+      <option>Math 217</option>
+      <option>Math 226</option>
+      <option>Math 253</option>
+      <option>Math 263</option>
+    </select>
+  </div>
+    <div class="form-group">
+    <label for="exampleSelect3">Example select</label>
+    <select class="form-control" id="exampleSelect3">
+      <option>STAT 200</option>
+      <option>STAT 203</option>
+      <option>STAT 241</option>
+      <option>STAT 251</option>
+      <option>BIOL 300</option>
+    </select>
+  </div>
+</form>
+      </div>
+       <div class="tab-pane" id="tab2">
+        <form action="">
+ <div class="form-group">
+    <label for="exampleSelect4">One of</label>
+    <select class="form-control" id="exampleSelect4">
+      <option>Math 101</option>
+      <option>Math 103</option>
+      <option>Math 105</option>
+    </select>
+  </div>
+ 
+</form>
+      </div>
+      <div class="tab-pane" id="tab3">
+        3
+      </div>
+      <div class="tab-pane" id="tab4">
+        4
+      </div>
+      <div class="tab-pane" id="tab5">
+        5
+      </div>
+      <div class="tab-pane" id="tab6">
+        6
+      </div>
+    </div>	
+  </div>
+  <button>Next</button>
+</div>
             <!-- End jumbotron -->
           </div>
         </div>
@@ -181,10 +264,12 @@
           <div class="panel-body">
             <!-- Start list -->
             <div class="list-group">
-              <a href="#" class="list-group-item">Course 2</a>
-              <a href="#" class="list-group-item">Course 3</a>
-              <a href="#" class="list-group-item">Course 4</a>
-              <a href="#" class="list-group-item">Course 5</a>
+              <a href="#" class="list-group-item" style="display:none;"id ="class1">Course 2</a>
+              <a href="#" class="list-group-item" style="display:none;" id="class2">Course 3</a>
+			<a href="#" class="list-group-item" style="display:none;"id ="class3">Course 2</a>
+              <a href="#" class="list-group-item" style="display:none;" id="class4">Course 3</a>
+              <a href="#" class="list-group-item" style="display:none;"id ="class5">Course 2</a>
+              <a href="#" class="list-group-item" style="display:none;" id="class6">Course 3</a>
             </div>
             <!-- End List -->
           </div>
@@ -193,6 +278,61 @@
       </div>
     </div>
   </div>
+  
+  <script>var wizard = $('#rootwizard').bootstrapWizard();
+
+  $('button').click(function(){
+    wizard.bootstrapWizard('next')
+  });
+  
+  $( "#exampleSelect1" )
+  .change(function () {
+    var str = "";
+    $( "#exampleSelect1 option:selected" ).each(function() {
+      str += $( this ).text() + " ";
+    });
+    console.log(str);
+    $("#class1").text(str);
+    $("#class1").show();
+  })
+  .change();
+  $( "#exampleSelect2" )
+  .change(function () {
+    var str = "";
+    $( "#exampleSelect2 option:selected" ).each(function() {
+      str += $( this ).text() + " ";
+    });
+    console.log(str);
+    $("#class2").text(str);
+    $("#class2").show();
+  })
+  .change();
+  $( "#exampleSelect3" )
+  .change(function () {
+    var str = "";
+    $( "#exampleSelect3 option:selected" ).each(function() {
+      str += $( this ).text() + " ";
+    });
+    console.log(str);
+    $("#class3").text(str);
+    $("#class3").show();
+  })
+  .change();
+  $( "#exampleSelect4" )
+  .change(function () {
+    var str = "";
+    $( "#exampleSelect4 option:selected" ).each(function() {
+      str += $( this ).text() + " ";
+    });
+    console.log(str);
+    $("#class4").text(str);
+    $("#class4").show();
+  })
+  .change();
+</script>
+  
+  
+  </script>
 
 </body>
 
