@@ -44,6 +44,12 @@
       background-color: #dedfe0;
       border: 0.15em solid white;
     }
+
+    .whiteBtn:disabled {
+      background: #efefef;
+      border: 0;
+      color: grey;
+    }
     
     .course-btn {
       background-color: white;
@@ -221,17 +227,10 @@
             <!-- Start jumbotron -->
             <div class="jumbotron">
               <div id="wizard_instructions" class="centered"></div>
-              <div class="radio">
-                <label><input type="radio" onclick="alert('A')" name="optradio">A</label>
-                <ul class="nav">
-                  <li class="dropdown" id="dropdown">
-                    <button class="dropdown-toggle" disabled="true" data-toggle="dropdown"></button>
-                  </li>
-                </ul>
-              </div>
-              <div class="radio">
-                <label><input type="radio" name="optradio">B</label>
-              </div>
+              <ul class="nav">
+                <li class="dropdown" id="dropdown">
+                </li>
+              </ul>
             </div>
             <!-- End jumbotron -->
             <div class="centered"><button class="btn-success btn-lg" onclick="addToPlan()">Add To Plan</button></div>
