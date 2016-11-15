@@ -5,15 +5,16 @@ var wizardHistory = ["CPSC340"];
 var page = 0;
 var currentCourse = "CPSC340";
 var currentPR = 1;
+var next_pr = 2;
 var toAdd = [];
 
 $(document).ready(function () {
     $.getJSON("db.json", function (data) {
         db = data;
-        parse(db, "CPSC340");
+        parse(db, currentCourse);
         if (data[currentCourse].prereqs !== null) {
             updateInstructions();
-            $("#dropdown").html(dropdown(data[currentCourse].prereqs, 0));
+            $("#dropdown").html(dropdowns(data[currentCourse].prereqs));
         } else {
             $("#dropdown").html("<br>");
         }
@@ -29,6 +30,7 @@ function updateInstructions() {
 function parse(data, course) {
     if (course !== null) {
         var course_data = data[course];
+        $('#currentCourse').text(currentCourse);
         $('#courseTitle').text(course_data.title);
         $('#courseCredits').text("Credits: " + course_data.credits);
         $('#courseInfo').text(course_data.info);
@@ -141,8 +143,8 @@ function getCourseList() {
 }
 
 function newCourseBtn(course, id, cl) {
-    var rtn = "<button class='course-btn " + cl + "' onmouseover=goToCourse('" + course + "') onclick=selectCourse('" + course + "','" + id + "')" 
-    if (cl === "alt_b"){
+    var rtn = "<button class='course-btn " + cl + "' onmouseout=goToCourse('" + currentCourse + "') onmouseover=goToCourse('" + course + "') onclick=selectCourse('" + course + "','" + id + "')"
+    if (cl === "alt_b") {
         rtn += " disabled='true'";
     }
     rtn += ">" + course + "</button>";
@@ -161,43 +163,41 @@ function addToPlan() {
     for (var i = 0; i < toAdd.length; i++) {
         addCourse(toAdd[i]);
     }
-    nextPR();
+    //nextPR();
 }
 
-function dropdowns(r, or) {
+function dropdowns(r) {
     //create dropdowns and course buttons for prereq selections
     var dd_html = "";
     for (var i = 0; i < r.length; i++) {
-        dd_html += dropdown(r, i, or);
+        dd_html += dropdown(r, i);
     }
     return dd_html;
 }
 
-function dropdown(r, n, or) {
+function dropdown(r, n) {
     //create dropdown for prereq selection
     var pr_id = "prdrop" + n;
-    var rtn = ""
+    var cl = "default";
+    var rtn = "";
     if (r[n].or !== null) {
+        cl = "alt_b";
         rtn = orDropDowns(r, n, pr_id);
     }
     else if (r[n].n_of === "one") {
-        rtn += "<div class='dropdown'><button onmouseover=ddPreviewCourse('" + pr_id + "') class='whiteBtn alt_b' type='button' data-toggle='dropdown'"
-        if (or) {
-            rtn += "id='" + pr_id + "b' disabled='true'>";
-        } else {
-            rtn += "id='" + pr_id + "'>"
-        }
-        rtn += "Choose One <span class='caret'></span>"
+        rtn += "<div class='dropdown'><button onmouseout=goToCourse('" + currentCourse + "') onmouseover=ddPreviewCourse('" + pr_id + "') class='whiteBtn default' type='button' data-toggle='dropdown'"
+            + "id='" + pr_id + "'>"
+            + "Choose One <span class='caret'></span>"
             + "</button><ul class='dropdown-menu center-dropdown'>"
         for (var i = 0; i < r[n].courses.length; i++) {
-            rtn += "<li>" + newCourseBtn(r[n].courses[i], pr_id, "default") + "</li>";
+            rtn += "<li>" + newCourseBtn(r[n].courses[i], pr_id, cl) + "</li>";
         }
         rtn += "</ul></div>"
     }
     else if (r[n].n_of = "all") {
         rtn += "</ul>"
         for (var i = 0; i < r[n].courses.length; i++) {
-            rtn += "<li>" + newCourseBtn(r[n].courses[i], pr_id, "alt_b") + "</li>";
+            rtn += "<li>" + newCourseBtn(r[n].courses[i], pr_id, cl) + "</li>";
         }
         rtn += "</ul>"
     }
@@ -207,21 +207,50 @@ function dropdown(r, n, or) {
 function orDropDowns(r, n, id) {
     //create dropdowns and course buttons for "OR" prereq selection
     var id_b = "prdrop1b"
-    var rtn = "<div class='radio'><label><input type='radio' name='optradio' onclick=enable('default','alt_b')>A</label></div>"
-        + "<div class='dropdown'><button disabled='true' onmouseover=ddPreviewCourse('" + id + "') class='whiteBtn default' type='button' data-toggle='dropdown'"
+    var rtn = "<div class='radio'><label><input type='radio' name='optradio' onclick=enable('alt_a','alt_b')>A</label></div>"
+        + "<div class='dropdown'><button disabled='true' onmouseover=ddPreviewCourse('" + id + "') class='whiteBtn alt_a' type='button' data-toggle='dropdown'"
         + "id='" + id + "'>"
         + "Choose One <span class='caret'></span>"
         + "</button><ul class='dropdown-menu center-dropdown'>"
     for (var i = 0; i < r[n].courses.length; i++) {
-        rtn += "<li>" + newCourseBtn(r[n].courses[i], id, "alt_b") + "</li>";
+        rtn += "<li>" + newCourseBtn(r[n].courses[i], id, "alt_a") + "</li>";
     }
     rtn += "</ul></div>"
-        + "<div class='radio'><label><input type='radio' onclick=enable('alt_b','default') name='optradio'>B</label></div>"
-        + dropdowns(r[n].or, true)
+        + "<div class='radio'><label><input type='radio' onclick=enable('alt_b','alt_a') name='optradio'>B</label></div>"
+    //     + dropdowns(r[n].or)
+
+    for (var i = 0; i < r[n].or.length; i++) {
+        rtn += orDropDown(r[n].or, i);
+    }
     return rtn;
 }
 
-function enable(en,dis) {
+function orDropDown(r, n) {
+    var pr_id = "prdrop" + n + "b";
+    var cl = "alt_b";
+    var rtn = "";
+    if (r[n].n_of === "one") {
+        rtn += "<div class='dropdown'><button onmouseout=goToCourse('" + currentCourse + "') onmouseover=ddPreviewCourse('" + pr_id + "') class='whiteBtn alt_b' type='button' data-toggle='dropdown'"
+            + "id='" + pr_id + "' disabled='true'>"
+            + "Choose One <span class='caret'></span>"
+            + "</button><ul class='dropdown-menu center-dropdown'>"
+        for (var i = 0; i < r[n].courses.length; i++) {
+            rtn += "<li>" + newCourseBtn(r[n].courses[i], pr_id, cl) + "</li>";
+            console.log("New course button -> link to dropdown " + pr_id)
+        }
+        rtn += "</ul></div>"
+    }
+    else if (r[n].n_of = "all") {
+        rtn += "</ul>"
+        for (var i = 0; i < r[n].courses.length; i++) {
+            rtn += "<li>" + newCourseBtn(r[n].courses[i], pr_id, cl) + "</li>";
+        }
+        rtn += "</ul>"
+    }
+    return rtn;
+}
+
+function enable(en, dis) {
     $('.' + en).prop("disabled", false);
     $('.' + dis).prop("disabled", true);
 }
