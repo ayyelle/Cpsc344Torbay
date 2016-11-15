@@ -1,12 +1,12 @@
 var db;
-var courseSet = { "CPSC340": true };
+var myDegree = {};
 var orderedCourseList = [];
 var wizardHistory = ["CPSC340"];
 var page = 0;
 var currentCourse = "CPSC340";
 var currentPR = 1;
 var next_pr = 2;
-var toAdd = [];
+var toAdd = {};
 
 $(document).ready(function () {
     $.getJSON("db.json", function (data) {
@@ -18,6 +18,7 @@ $(document).ready(function () {
         } else {
             $("#dropdown").html("<br>");
         }
+        addToMyDegree("CPSC340");
         sortCourses();
         updateCourseList();
     });
@@ -25,6 +26,21 @@ $(document).ready(function () {
 
 function updateInstructions() {
     $("#wizard_instructions").html("<p>Pre-reqs " + currentPR + "/" + db[currentCourse].prereqs.length + "</p>");
+}
+
+function addToMyDegree(course) {
+    if (!myDegree.hasOwnProperty(course)) {
+        myDegree[course] = {
+            "leadsTo": 1,
+            "reqsMet": false,
+            "prereqs": []
+        }
+    } else {
+        myDegree[course].leadsTo++
+    }
+    if (reqsMet(course)) {
+        myDegree[course].reqsMet = true;
+    }
 }
 
 function parse(data, course) {
@@ -97,7 +113,6 @@ function goToCourse(c) {
 }
 
 function addCourse(c) {
-    courseSet[c] = true;
     sortCourses();
     updateCourseList();
 }
@@ -114,14 +129,14 @@ function nextPR() {
 function sortCourses() {
     //TODO: finish sorting algorithym 
     orderedCourseList = [];
-    for (var course in courseSet) {
+    for (var course in myDegree) {
         orderedCourseList.push(course);
     }
-    for (var course in courseSet) {
+    for (var course in myDegree) {
         if (db[course].prereqs !== null) {
             for (var i = 0; i < db[course].prereqs.length; i++) {
                 for (var j = 0; j < db[course].prereqs[i].courses.length; j++) {
-                    if (db[course].prereqs[i].courses[j] in courseSet) {
+                    if (db[course].prereqs[i].courses[j] in myDegree) {
                         var childIndex = orderedCourseList.indexOf(db[course].prereqs[i].courses[j]);
                         orderedCourseList.splice(childIndex, 1);
                         var parentIndex = orderedCourseList.indexOf(course);
@@ -152,18 +167,85 @@ function newCourseBtn(course, id, cl) {
 }
 
 function selectCourse(course, id) {
+    var lastCourse = $("#" + id + "").data("course");
+    removeCourse(lastCourse);
     $("#" + id + "").html(course + " " + "<span class='caret'></span>");
     $("#" + id + "").data("course", course);
-    toAdd.push(course);
+    addToMyDegree(course);
+    toAdd[course] = true;
     goToCourse(course);
+}
+
+function removeCourse(course) {
+    if (course !== undefined) {
+        delete myDegree[course];
+    }
 }
 
 function addToPlan() {
     var pr = db[currentCourse].prereqs;
-    for (var i = 0; i < toAdd.length; i++) {
-        addCourse(toAdd[i]);
+    for (var c in myDegree) {
+        addCourse(c);
     }
-    //nextPR();
+    if (reqsMet(currentCourse)) {
+        myDegree[currentCourse].reqsMet = true;
+        alert(JSON.stringify(myDegree));
+        console.log("REQMET CPSC340 " + myDegree[currentCourse].reqsMet);
+        nextCourse();
+    }
+}
+
+function reqsMet(c) {
+    console.log("->reqsMet->" + (!db[c].prereqs));
+    if (db[c].prereqs !== null) {
+        for (var i = 0; i < db[c].prereqs.length; i++) {
+            if (!reqMet(db[c].prereqs[i])) {
+                console.log("req " + (i + 1) + " not met");
+                return false;
+            }
+        }
+    }
+    /*
+    if (db[c].coreqs !== null) {
+        for (var i = 0; i < db[c].coreqs.length; i++) {
+            if (!reqMet(db[c].coreqs[i])) {
+                console.log("req " + (i + 1) + " not met");
+                return false;
+            }
+        }
+    }
+    */
+    return true;
+}
+
+function reqMet(r) {
+    for (var j = 0; j < r.courses.length; j++) {
+        if (r.courses[j] in myDegree) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function nextCourse() {
+    var nc = getNextCourse();
+    alert(nc);
+    if (nc !== null) {
+        currentCourse = nc;
+        parse(db, currentCourse);
+        $("#dropdown").html(dropdowns(db[currentCourse].prereqs));
+    } else {
+        alert("You're done!");
+    }
+}
+
+function getNextCourse() {
+    for (var c in myDegree) {
+        if (myDegree[c].reqsMet === false) {
+            return c;
+        }
+    }
+    return null;
 }
 
 function dropdowns(r) {

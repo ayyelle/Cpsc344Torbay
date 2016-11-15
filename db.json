@@ -100,6 +100,35 @@
         ],
         "coreqs": null
     },
+    "MATH220": {
+        "title": "MATH 220 Mathematical Proof",
+        "info": "Sets and functions; induction; cardinality; properties of the real numbers; sequences, series, and limits. Logic, structure, style, and clarity of proofs emphasized throughout. ",
+        "credits": 3,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH101",
+                    "MATH103",
+                    "MATH105",
+                    "SCIE001"
+                ],
+                "or": {
+                    "n_of": "one",
+                    "courses": [
+                        "MATH121",
+                        "MATH200",
+                        "MATH217",
+                        "MATH226",
+                        "MATH253",
+                        "MATH263"
+                    ],
+                    "or": null
+                }
+            }
+        ],
+        "coreqs": null
+    },
     "STAT200": {
         "title": "STAT 200 Elementary Statistics for Applications",
         "info": "Classical, nonparametric, and robust inferences about means, variances, and analysis of variance, using computers. Emphasis on problem formulation, assumptions, and interpretation. See the Faculty of Science Credit Exclusion Lists: www.calendar.ubc.ca/vancouver/index.cfm?tree=12,215,410,414.",
@@ -184,6 +213,31 @@
                 "courses": [
                     "CPSC110",
                     "CPSC260"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "CPSC221": {
+        "title": "CPSC 221 Basic Algorithms and Data Structures",
+        "info": "Design and analysis of basic algorithms and data structures; algorithm analysis methods, searching and sorting algorithms, basic data structures, graphs and concurrency. ",
+        "credits": 4,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "CPSC210",
+                    "EECE210",
+                    "CPEN221"
+                ],
+                "or": null
+            },
+            {
+                "n_of": "one",
+                "courses": [
+                    "CPSC121",
+                    "MATH220"
                 ],
                 "or": null
             }
