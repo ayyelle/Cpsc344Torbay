@@ -212,20 +212,27 @@ function getCourseList2(yr, sem) {
     // alert(JSON.stringify(orderedSet));
     if (orderedSet[yr][sem] !== {}) {
         for (var course in orderedSet[yr][sem]) {
-            list += "<a href='#' class='list-group-item'>" + course + "</a>"
-            console.log("add to list:  " + "<a href='#' class='list-group-item'>" + course + "</a>")
+            list += "<div class='centered'><button class='in-plan plan-btn'>" + course + "</button></div>"
         }
     }
     return list;
 }
 
 function newCourseBtn(course, id, cl) {
-    var rtn = "<button class='course-btn " + cl + "' onmouseout=goToCourse('" + currentCourse + "') onmouseover=goToCourse('" + course + "') onclick=selectCourse('" + course + "','" + id + "')"
+    var color = "not-in-plan";
+    if (course in myDegree){
+        color = "in-plan"
+    }
+    var rtn = "<button class='course-btn " + cl + " " + color + "' onmouseout=goToCourse('" + currentCourse + "') onmouseover=goToCourse('" + course + "') onclick=selectCourse('" + course + "','" + id + "')"
     if (cl === "alt_b") {
         rtn += " disabled='true'";
     }
     rtn += ">" + course + "</button>";
     return rtn;
+}
+
+function inPlan(c){
+    return true;
 }
 
 function selectCourse(course, id) {
