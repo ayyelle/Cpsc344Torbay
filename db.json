@@ -155,6 +155,23 @@
         ],
         "coreqs": null
     },
+    "EECE320": {
+        "title": "EECE 320 Discrete Structures and Algorithms",
+        "info": "Discrete structures, such as trees and graphs, and their properties; introduction to algorithms and algorithmic complexity. Proof of correctness; design techniques such as greedy algorithms and dynamic programming. Credit will be granted for only one of EECE 320 or CPSC 320.",
+        "credits": 4,
+        "yr": 3,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "CPSC260",
+                    "CPSC221"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
     "CPSC260": {
         "title": "CPSC 260 Data Structures and Algorithms for Computer Engineers",
         "info": "Design and analysis of object-oriented programs, emphasizing data structures. Topics include: classes, interfaces, fundamental data structures, algorithmic complexity, basic debugging and testing techniques.",
