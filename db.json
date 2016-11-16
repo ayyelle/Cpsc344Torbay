@@ -419,5 +419,13 @@
         "yr": 1,
         "prereqs": null,
         "coreqs": null
+    },
+    "PHYS100": {
+        "title": "PHYS 100 Introductory Physics",
+        "info": "An introduction to fundamental concepts such as force, energy, momentum, and the use of graphs and vectors in physics; geometrical optics; electricity; laboratory exercises to familiarize the student with both the phenomena and the basic laboratory instruments commonly used to measure them. Students with credit for Physics 12 may not obtain credit for this course unless they took AP, IB, or A-level Physics and were offered advanced credit for PHYS 100. ",
+        "credits": 3,
+        "yr": 1,
+        "prereqs": null,
+        "coreqs": null
     }
 }
