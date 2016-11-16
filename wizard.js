@@ -6,7 +6,20 @@ var page = 0;
 var currentCourse = "CPSC340";
 var currentPR = 1;
 var next_pr = 2;
-var toAdd = {};
+var orderedSet = {
+    "1": {
+        "sem1": {},
+        "sem2": {}
+    },
+    "2": {
+        "sem1": {},
+        "sem2": {}
+    },
+    "3": {
+        "sem1": {},
+        "sem2": {}
+    }
+}
 
 $(document).ready(function () {
     $.getJSON("db.json", function (data) {
@@ -33,7 +46,7 @@ function addToMyDegree(course) {
         myDegree[course] = {
             "leadsTo": 1,
             "reqsMet": false,
-            "prereqs": []
+            "prereqs": {}
         }
     } else {
         myDegree[course].leadsTo++
@@ -76,7 +89,14 @@ function forward() {
 }
 
 function updateCourseList() {
-    $('#courseList').html(getCourseList());
+    console.log("UPDATE");
+    $('#yr1-1').html(getCourseList2("1", "sem1"));
+    $('#yr1-2').html(getCourseList2("1", "sem2"));
+    $('#yr2-1').html(getCourseList2("2", "sem1"));
+    $('#yr2-2').html(getCourseList2("2", "sem2"));
+    $('#yr3-1').html(getCourseList2("3", "sem1"));
+    $('#yr3-2').html(getCourseList2("3", "sem2"));
+    //$('#yr1').html(getCourseList());
 }
 
 function display_reqs(r) {
@@ -127,32 +147,56 @@ function nextPR() {
 }
 
 function sortCourses() {
-    //TODO: finish sorting algorithym 
-    orderedCourseList = [];
+    // For each course in myDegree ...
     for (var course in myDegree) {
-        orderedCourseList.push(course);
+        // ... add to an orderedSet, OS, by YEAR and SEMESTER (default to semester 1)
+        orderedSet[db[course]["yr"]]["sem1"][course] = true;
     }
-    for (var course in myDegree) {
-        if (db[course].prereqs !== null) {
-            for (var i = 0; i < db[course].prereqs.length; i++) {
-                for (var j = 0; j < db[course].prereqs[i].courses.length; j++) {
-                    if (db[course].prereqs[i].courses[j] in myDegree) {
-                        var childIndex = orderedCourseList.indexOf(db[course].prereqs[i].courses[j]);
-                        orderedCourseList.splice(childIndex, 1);
-                        var parentIndex = orderedCourseList.indexOf(course);
-                        orderedCourseList.splice(parentIndex, 0, db[course].prereqs[i].courses[j]);
-                        console.log("New List: " + JSON.stringify(orderedCourseList));
-                    }
+    // For each YEAR in the OS ...
+    for (var yr in orderedSet) {
+        if (orderedSet[yr].sem1 !== {}) {
+            // For each course in semester 1 ...
+            for (var course in orderedSet[yr].sem1) {
+                // ... get prereq if one exists in current semester block
+                if (getPrereq(course, orderedSet[yr].sem1)) {
+                    delete orderedSet[yr].sem1[course];
+                    orderedSet[yr].sem2[course] = true;
                 }
+
             }
         }
     }
+    console.log(JSON.stringify(orderedSet));
+}
+
+function getPrereq(c, semester) {
+    // For each prereq in myDegree for course c ...
+    for (var x in myDegree[c].prereqs) {
+        // ...if found, return selected prereq of course that is also in given semester
+        console.log("4: " + x + " check if in " + JSON.stringify(semester) + " -> " + (x in semester));
+        if (x in semester) {
+            return true;
+        }
+    }
+    return null;
 }
 
 function getCourseList() {
     var list = "";
     for (var i = 0; i < orderedCourseList.length; i++) {
         list += "<a href='#' class='list-group-item'>" + orderedCourseList[i] + "</a>"
+    }
+    return list;
+}
+
+function getCourseList2(yr, sem) {
+    var list = "";
+   // alert(JSON.stringify(orderedSet));
+    if (orderedSet[yr][sem] !== {}) {
+        for (var course in orderedSet[yr][sem]) {
+            list += "<a href='#' class='list-group-item'>" + course + "</a>"
+            console.log("add to list:  " + "<a href='#' class='list-group-item'>" + course + "</a>")
+        }
     }
     return list;
 }
@@ -172,7 +216,6 @@ function selectCourse(course, id) {
     $("#" + id + "").html(course + " " + "<span class='caret'></span>");
     $("#" + id + "").data("course", course);
     addToMyDegree(course);
-    toAdd[course] = true;
     goToCourse(course);
 }
 
@@ -189,18 +232,20 @@ function addToPlan() {
     }
     if (reqsMet(currentCourse)) {
         myDegree[currentCourse].reqsMet = true;
-        alert(JSON.stringify(myDegree));
+        //alert(JSON.stringify(myDegree));
         console.log("REQMET CPSC340 " + myDegree[currentCourse].reqsMet);
         nextCourse();
     }
 }
 
+//TODO: check for or reqs
 function reqsMet(c) {
     console.log("->reqsMet->" + (!db[c].prereqs));
     if (db[c].prereqs !== null) {
         for (var i = 0; i < db[c].prereqs.length; i++) {
-            if (!reqMet(db[c].prereqs[i])) {
+            if (!reqMet(c, db[c].prereqs[i])) {
                 console.log("req " + (i + 1) + " not met");
+                myDegree[c].prereqs = {};
                 return false;
             }
         }
@@ -218,9 +263,11 @@ function reqsMet(c) {
     return true;
 }
 
-function reqMet(r) {
+function reqMet(c, r) {
     for (var j = 0; j < r.courses.length; j++) {
         if (r.courses[j] in myDegree) {
+            myDegree[c].prereqs[r.courses[j]] = true;
+            //  alert(JSON.stringify(myDegree));
             return true;
         }
     }
@@ -229,7 +276,7 @@ function reqMet(r) {
 
 function nextCourse() {
     var nc = getNextCourse();
-    alert(nc);
+    //alert(nc);
     if (nc !== null) {
         currentCourse = nc;
         parse(db, currentCourse);

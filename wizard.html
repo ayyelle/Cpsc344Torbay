@@ -25,11 +25,10 @@
 
   <!-- Put styles in a separate CSS file later on -->
   <style>
-
     .wizard-div {
       background: #efefef;
       border-radius: 10px;
-      margin:10px;
+      margin: 10px;
       padding: 15px;
     }
     
@@ -37,6 +36,14 @@
       background-color: #2F5D7C;
     }
 
+    .list-group {
+      background-color: #6dc15e;
+      border-radius: 10px;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    
     .reqs {
       font-size: 12px;
     }
@@ -244,9 +251,9 @@
             <!-- Start jumbotron -->
             <div class="wizard-div">
               <div class="centered">
-              <ul class="nav">
-                <li class="dropdown" id="dropdown"></li>
-              </ul>
+                <ul class="nav">
+                  <li class="dropdown" id="dropdown"></li>
+                </ul>
               </div>
             </div>
             <!-- End jumbotron -->
@@ -286,7 +293,20 @@
           </div>
           <div class="panel-body">
             <!-- Start list -->
-            <div class="list-group" id="courseList">
+            <h5>Year 1</h5>
+            <div class="year-group">
+              <div class="list-group" id="yr1-1"></div>
+              <div class="list-group" id="yr1-2"></div>
+            </div>
+            <h5>Year 2</h5>
+            <div class="year-group">
+              <div class="list-group" id="yr2-1"></div>
+              <div class="list-group" id="yr2-2"></div>
+            </div>
+            <h5>Year 3</h5>
+            <div class="year-group">
+              <div class="list-group" id="yr3-1"></div>
+              <div class="list-group" id="yr3-2"></div>
             </div>
             <!-- End List -->
           </div>
