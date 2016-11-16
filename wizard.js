@@ -89,14 +89,32 @@ function forward() {
 }
 
 function updateCourseList() {
-    console.log("UPDATE");
-    $('#yr1-1').html(getCourseList2("1", "sem1"));
-    $('#yr1-2').html(getCourseList2("1", "sem2"));
-    $('#yr2-1').html(getCourseList2("2", "sem1"));
-    $('#yr2-2').html(getCourseList2("2", "sem2"));
-    $('#yr3-1').html(getCourseList2("3", "sem1"));
-    $('#yr3-2').html(getCourseList2("3", "sem2"));
-    //$('#yr1').html(getCourseList());
+    for (var i = 1; i < 4; i++) {
+        var id1 = "#yr" + i + "-1";
+        var id2 = "#yr" + i + "-2";
+        var yrId = "" + i;
+        
+        if (JSON.stringify(orderedSet[yrId]["sem1"]) === "{}"
+            && JSON.stringify(orderedSet[yrId]["sem2"]) === "{}") {
+            $("#yr" + i).prop("hidden", true);
+        } else {
+            $("#yr" + i).prop("hidden", false);
+        }
+        
+        updateSemester(i, "sem1", id1);
+        updateSemester(i, "sem2", id2);
+    }
+}
+
+function updateSemester(yrId, semId, id) {
+    if (JSON.stringify(orderedSet[yrId][semId]) === "{}") {
+        console.log("hide " + yrId + " " + semId);
+        $(id).prop("hidden", true);
+    } else {
+        $(id).prop("hidden", false);
+        $(id).html(getCourseList2(yrId, semId));
+    }
+    console.log("id: " + id + " yr: " + yrId + " sem: " + semId);
 }
 
 function display_reqs(r) {
@@ -191,7 +209,7 @@ function getCourseList() {
 
 function getCourseList2(yr, sem) {
     var list = "";
-   // alert(JSON.stringify(orderedSet));
+    // alert(JSON.stringify(orderedSet));
     if (orderedSet[yr][sem] !== {}) {
         for (var course in orderedSet[yr][sem]) {
             list += "<a href='#' class='list-group-item'>" + course + "</a>"
