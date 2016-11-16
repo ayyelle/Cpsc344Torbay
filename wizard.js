@@ -349,6 +349,7 @@ function dropdown(r, n) {
         for (var i = 0; i < r[n].courses.length; i++) {
             rtn += "<li>" + newCourseBtn(r[n].courses[i], pr_id, cl) + "</li>";
             autoAdd["default"].push(r[n].courses[i]);
+            addToMyDegree(r[n].courses[i]);
         }
         rtn += "</ul>"
     }
