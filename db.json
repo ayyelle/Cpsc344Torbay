@@ -3,6 +3,7 @@
         "title": "CPSC 340 Machine Learning and Data Mining",
         "info": "Models of algorithms for dimensionality reduction, nonlinear regression, classification, clustering and unsupervised learning; applications to computer graphics, computer games, bio-informatics, information retrieval, e-commerce, databases, computer vision and artificial intelligence.",
         "credits": 3,
+        "yr": 3,
         "prereqs": [
             {
                 "n_of": "one",
@@ -70,6 +71,7 @@
         "title": "MATH 152 Linear Systems",
         "info": "2D and 3D geometry, vectors and matrices, eigenvalues and vibration, physical applications. Laboratories demonstrate computer solutions of large systems. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
         "credits": 3,
+        "yr": 1,
         "prereqs": null,
         "coreqs": [
             {
@@ -85,6 +87,7 @@
         "title": "MATH 200 Calculus III",
         "info": "Analytic geometry in 2 and 3 dimensions, partial and directional derivatives, chain rule, maxima and minima, second derivative test, Lagrange multipliers, multiple integrals with applications. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
         "credits": 3,
+        "yr": 2,
         "prereqs": [
             {
                 "n_of": "one",
@@ -100,21 +103,71 @@
         ],
         "coreqs": null
     },
-    "STAT200": {
-        "title":"STAT 200 Elementary Statistics for Applications",
-        "info": "Classical, nonparametric, and robust inferences about means, variances, and analysis of variance, using computers. Emphasis on problem formulation, assumptions, and interpretation. See the Faculty of Science Credit Exclusion Lists: www.calendar.ubc.ca/vancouver/index.cfm?tree=12,215,410,414.",
+    "MATH220": {
+        "title": "MATH 220 Mathematical Proof",
+        "info": "Sets and functions; induction; cardinality; properties of the real numbers; sequences, series, and limits. Logic, structure, style, and clarity of proofs emphasized throughout. ",
         "credits": 3,
+        "yr": 2,
         "prereqs": [
             {
-            "n_of": "one",
-            "courses": [
-                "MATH101",
-                "MATH103",
-                "MATH105",
-                "MATH121",
-                "SCIE001"
-            ],
-            "or": null
+                "n_of": "one",
+                "courses": [
+                    "MATH101",
+                    "MATH103",
+                    "MATH105",
+                    "SCIE001"
+                ],
+                "or": [
+                    {
+                        "n_of": "one",
+                        "courses": [
+                            "MATH121",
+                            "MATH200",
+                            "MATH217",
+                            "MATH226",
+                            "MATH253",
+                            "MATH263"
+                        ],
+                        "or": null
+                    }
+                ]
+            }
+        ],
+        "coreqs": null
+    },
+    "STAT200": {
+        "title": "STAT 200 Elementary Statistics for Applications",
+        "info": "Classical, nonparametric, and robust inferences about means, variances, and analysis of variance, using computers. Emphasis on problem formulation, assumptions, and interpretation. See the Faculty of Science Credit Exclusion Lists: www.calendar.ubc.ca/vancouver/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "yr": 2,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH101",
+                    "MATH103",
+                    "MATH105",
+                    "MATH121",
+                    "SCIE001"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "EECE320": {
+        "title": "EECE 320 Discrete Structures and Algorithms",
+        "info": "Discrete structures, such as trees and graphs, and their properties; introduction to algorithms and algorithmic complexity. Proof of correctness; design techniques such as greedy algorithms and dynamic programming. Credit will be granted for only one of EECE 320 or CPSC 320.",
+        "credits": 4,
+        "yr": 3,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "CPSC260",
+                    "CPSC221"
+                ],
+                "or": null
             }
         ],
         "coreqs": null
@@ -123,42 +176,157 @@
         "title": "CPSC 260 Data Structures and Algorithms for Computer Engineers",
         "info": "Design and analysis of object-oriented programs, emphasizing data structures. Topics include: classes, interfaces, fundamental data structures, algorithmic complexity, basic debugging and testing techniques.",
         "credits": 3,
+        "yr": 2,
         "prereqs": [
             {
-            "n_of": "one",
-            "courses": ["APSC160"],
-            "or": null
+                "n_of": "one",
+                "courses": [
+                    "APSC160"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "MATH221": {
+        "title": "MATH 221 Matrix Algebra",
+        "info": "Systems of linear equations, operations on matrices, determinants, eigenvalues and eigenvectors, diagonalization of symmetric matrices. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "yr": 2,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH100",
+                    "MATH102",
+                    "MATH104",
+                    "MATH110",
+                    "MATH120",
+                    "MATH180",
+                    "MATH184"
+                ],
+                "or": [
+                    {
+                        "n_of": "one",
+                        "courses": [
+                            "MATH101",
+                            "MATH103",
+                            "MATH105",
+                            "MATH121",
+                            "SCIE001"
+                        ],
+                        "or": null
+                    }
+                ]
             }
         ],
         "coreqs": null
     },
     "APSC160": {
-        "title":"APSC 160 Introduction to Computation in Engineering Design",
+        "title": "APSC 160 Introduction to Computation in Engineering Design",
         "info": "Analysis and simulation, laboratory data acquisition and processing, measurement interfaces, engineering tools, computer systems organization, programming languages. Credit will only be given for one of: APSC 160, CPSC 301, or EOSC 211. ",
         "credits": 3,
+        "yr": 1,
         "prereqs": null,
         "coreqs": null
     },
     "CPSC210": {
-        "title":"CPSC 210 Software Construction",
+        "title": "CPSC 210 Software Construction",
         "info": "Design, development, and analysis of robust software components. Topics such as software design, computational models, data structures, debugging, and testing. ",
         "credits": 4,
+        "yr": 2,
         "prereqs": [
             {
-            "n_of": "one",
-            "courses": [
-                "CPSC110",
-                "CPSC260"
-            ],
-            "or": null
+                "n_of": "one",
+                "courses": [
+                    "CPSC110",
+                    "CPSC260"
+                ],
+                "or": null
             }
         ],
         "coreqs": null
+    },
+    "CPSC221": {
+        "title": "CPSC 221 Basic Algorithms and Data Structures",
+        "info": "Design and analysis of basic algorithms and data structures; algorithm analysis methods, searching and sorting algorithms, basic data structures, graphs and concurrency. ",
+        "credits": 4,
+        "yr": 2,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "CPSC210",
+                    "EECE210",
+                    "CPEN221"
+                ],
+                "or": null
+            },
+            {
+                "n_of": "one",
+                "courses": [
+                    "CPSC121",
+                    "MATH220"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "MATH217": {
+        "title": "MATH 217 Multivariable and Vector Calculus",
+        "info": "Partial differentiation, extreme values, multiple integration, vector fields, line and surface integrals, the divergence theorem, Green's and Stokes' theorems. Intended for students in Honours Physics and Engineering Physics. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 4,
+        "yr": 2,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "PHYS101",
+                    "PHYS107",
+                    "PHYS153",
+                    "SCIE001"
+                ],
+                "or": null
+            },
+            {
+                "n_of": "one",
+                "courses": [
+                    "PHYS102",
+                    "PHYS108",
+                    "PHYS153",
+                    "SCIE001"
+                ],
+                "or": null
+            },
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH101",
+                    "MATH103",
+                    "MATH105",
+                    "MATH121"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH152",
+                    "MATH221",
+                    "MATH223"
+                ],
+                "or": null
+            }
+        ]
     },
     "MATH101": {
         "title": "MATH 101 Integral Calculus with Applications to Physical Sciences and Engineering",
         "info": "The definite integral, integration techniques, applications, modeling, infinite series. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
         "credits": 3,
+        "yr": 1,
         "prereqs": [
             {
                 "n_of": "one",
@@ -181,6 +349,82 @@
         "title": "MATH 100 Differential Calculus with Applications to Physical Sciences and Engineering",
         "info": "Derivatives of elementary functions. Applications and modeling: graphing, optimization. Consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
         "credits": 3,
+        "yr": 1,
+        "prereqs": null,
+        "coreqs": null
+    },
+    "PHYS101": {
+        "title": "PHYS 101 Energy and Waves",
+        "info": "Fluids, harmonic oscillator, travelling waves, standing waves, sound, and interference of light waves, including diffraction. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414 ",
+        "credits": 3,
+        "yr": 1,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "PHYS12",
+                    "PHYS100"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH100",
+                    "MATH102",
+                    "MATH104",
+                    "MATH110",
+                    "MATH120",
+                    "MATH180",
+                    "MATH184"
+                ],
+                "or": null
+            }
+        ]
+    },
+    "PHYS102": {
+        "title": "PHYS 102 Electricity, Light and Radiation",
+        "info": "Introduction to optics, electricity and magnetism, electric circuits, radioactivity, including biological applications. Please consult the Faculty of Science credit exclusion list: http://www.calendar.ubc.ca/vancouver/index.cfm?tree=12,215,410,414 ",
+        "credits": 3,
+        "yr": 1,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "PHYS101",
+                    "PHYS107"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH101",
+                    "MATH103",
+                    "MATH105",
+                    "MATH121"
+                ],
+                "or": null
+            }
+        ]
+    },
+    "CPSC110": {
+        "title": "CPSC 110 Computation, Programs, and Programming",
+        "info": "Fundamental program and computation structures. Introductory programming skills. Computation as a tool for information processing, simulation and modeling, and interacting with the world. ",
+        "credits": 4,
+        "yr": 1,
+        "prereqs": null,
+        "coreqs": null
+    },
+    "PHYS100": {
+        "title": "PHYS 100 Introductory Physics",
+        "info": "An introduction to fundamental concepts such as force, energy, momentum, and the use of graphs and vectors in physics; geometrical optics; electricity; laboratory exercises to familiarize the student with both the phenomena and the basic laboratory instruments commonly used to measure them. Students with credit for Physics 12 may not obtain credit for this course unless they took AP, IB, or A-level Physics and were offered advanced credit for PHYS 100. ",
+        "credits": 3,
+        "yr": 1,
         "prereqs": null,
         "coreqs": null
     }

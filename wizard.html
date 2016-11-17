@@ -1,4 +1,4 @@
-<html>
+<!DOCTYPE html>
 
 <head>
   <title>UBC Student Services Centre - Courses</title>
@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
     crossorigin="anonymous">
 
+  <link rel="stylesheet" type="text/css" href="wizard-style.css">
+
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
@@ -28,16 +30,8 @@
 
 <body>
 
-  <!-- Put styles in a separate CSS file later on -->
-  <style>
-    #header {
-      background-color: #2F5D7C;
-    }
-   
-  </style>
-
   <div id="header" style="color:white">
-    Student Service Centre</br>
+    Student Service Centre<br>
     <h4>Course Schedule</h4>
   </div>
   <nav class="navbar navbar-default">
@@ -53,10 +47,6 @@
       </button>
 
       </div>
-
-
-
-
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
@@ -85,17 +75,14 @@
               <li><a href="#">Glossary</a></li>
               <li><a href="#">Course Planning - Vancouver</a></li>
               <li><a href="#">Course Planning - Okanagan</a></li>
-
             </ul>
           </li>
           <li>
             <a href="wizard.html" class="dropdown-toggle">Planner</a>
           </li>
-
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Login</a></li>
-
         </ul>
       </div>
       <!-- /.navbar-collapse -->
@@ -118,7 +105,6 @@
           <ul class="dropdown-menu">
             <li><a href="#">UBC Vancouver</a></li>
             <li><a href="#">UBC Okanagan</a></li>
-
           </ul>
         </div>
       </div>
@@ -136,7 +122,6 @@
       </div>
     </div>
   </div>
-
   <!-- Everything below this is the body -->
 
   <div class="container">
@@ -144,93 +129,23 @@
       <div class="col-sm-5" id="wizardBox">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Wizard</h3>
+            <h3 class="panel-title">Planner</h3>
+          </div>
+          <br>
+          <div class="centered">
+            <h4>Choose pre-reqs for <strong><span id="currentCourse"></span></strong>:</h4>
           </div>
           <div class="panel-body">
             <!-- Start jumbotron -->
-           
-<div id="page">
-  <div id="rootwizard">
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container">
-        <div>CPSC 340
-</div>
-          <ul>
-            <li><a href="#tab1" data-toggle="tab"></a></li>
-            <li><a href="#tab2" data-toggle="tab"></a></li>
-            <li><a href="#tab3" data-toggle="tab"></a></li>
-            <li><a href="#tab4" data-toggle="tab"></a></li>
-            <li><a href="#tab5" data-toggle="tab"></a></li>
-            <li><a href="#tab6" data-toggle="tab"></a></li>
-
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="tab-content">
-      <div class="tab-pane" id="tab1">
-       <form action="">
- <div class="form-group">
-    <label for="exampleSelect1">One of</label>
-    <select class="form-control" id="exampleSelect1">
-      <option>Math 152</option>
-      <option>Math 221</option>
-      <option>Math 223</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleSelect2">Example select</label>
-    <select class="form-control" id="exampleSelect2">
-      <option>Math 200</option>
-      <option>Math 217</option>
-      <option>Math 226</option>
-      <option>Math 253</option>
-      <option>Math 263</option>
-    </select>
-  </div>
-    <div class="form-group">
-    <label for="exampleSelect3">Example select</label>
-    <select class="form-control" id="exampleSelect3">
-      <option>STAT 200</option>
-      <option>STAT 203</option>
-      <option>STAT 241</option>
-      <option>STAT 251</option>
-      <option>BIOL 300</option>
-    </select>
-  </div>
-</form>
-      </div>
-       <div class="tab-pane" id="tab2">
-        <form action="">
- <div class="form-group">
-    <label for="exampleSelect4">One of</label>
-    <select class="form-control" id="exampleSelect4">
-      <option>Math 101</option>
-      <option>Math 103</option>
-      <option>Math 105</option>
-    </select>
-  </div>
- 
-</form>
-      </div>
-      <div class="tab-pane" id="tab3">
-        3
-      </div>
-      <div class="tab-pane" id="tab4">
-        4
-      </div>
-      <div class="tab-pane" id="tab5">
-        5
-      </div>
-      <div class="tab-pane" id="tab6">
-        6
-      </div>
-    </div>	
-  </div>
-  <button>Next</button>
-</div>
+            <div class="wizard-div">
+              <div class="centered">
+                <ul class="nav">
+                  <li class="dropdown" id="dropdown"></li>
+                </ul>
+              </div>
+            </div>
             <!-- End jumbotron -->
+            <div class="centered"><button class="btn-lg add-btn" onclick="addToPlan()">Continue</button></div>
           </div>
         </div>
       </div>
@@ -243,12 +158,15 @@
           <!-- Start carousel -->
           <div class="panel-body">
             <!-- Start list -->
-            <img src="https://s-media-cache-ak0.pinimg.com/564x/d3/eb/69/d3eb69c0577a41d102496888fffb2e78.jpg" style="width: 80%;,height:80%"
-            />
-            <a href="#" class="list-group-item">Stupid </a>
-            <a href="#" class="list-group-item">Windows 10 </a>
-            <a href="#" class="list-group-item">Updates</a>
-
+            <div id="course">
+              <h3 id="courseTitle"></h3>
+              <strong><h4 id="courseCredits"></h4></strong>
+              <p id="courseInfo"></p>
+              <h4>Pre-reqs:</h4>
+              <div id="coursePrereqs" class="reqs"></div>
+              <h4>Co-reqs:</h4>
+              <div id="courseCoreqs" class="reqs"></div>
+            </div>
           </div>
           <!-- End List -->
 
@@ -259,17 +177,26 @@
 
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Courses to Take</h3>
+            <h3 class="panel-title">Degree Plan</h3>
           </div>
           <div class="panel-body">
             <!-- Start list -->
-            <div class="list-group">
-              <a href="#" class="list-group-item" style="display:none;"id ="class1">Course 2</a>
-              <a href="#" class="list-group-item" style="display:none;" id="class2">Course 3</a>
-			<a href="#" class="list-group-item" style="display:none;"id ="class3">Course 2</a>
-              <a href="#" class="list-group-item" style="display:none;" id="class4">Course 3</a>
-              <a href="#" class="list-group-item" style="display:none;"id ="class5">Course 2</a>
-              <a href="#" class="list-group-item" style="display:none;" id="class6">Course 3</a>
+
+            <h5 id="yr1" class="centered">Year 1</h5>
+            <div class="year-group">
+              <div class="list-group" id="yr1-1"></div>
+              <div class="list-group" id="yr1-2"></div>
+            </div>
+            <h5 id="yr2" class="centered">Year 2</h5>
+            <div class="year-group">
+              <div class="list-group" id="yr2-1"></div>
+              <div class="list-group" id="yr2-2"></div>
+            </div>
+            <h5 id="yr3" class="centered">Year 3</h5>
+            <div class="year-group">
+              <div class="list-group" id="yr3-1"></div>
+              <div class="list-group" id="yr3-2"></div>
+
             </div>
             <!-- End List -->
           </div>
