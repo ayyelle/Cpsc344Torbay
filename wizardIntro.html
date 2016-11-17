@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 
 <head>
   <title>UBC Student Services Centre - Courses</title>
@@ -14,6 +13,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
     crossorigin="anonymous">
 
+  <link rel="stylesheet" type="text/css" href="wizard-style.css">
+
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
@@ -23,12 +24,6 @@
 </head>
 
 <body>
-  <!-- Put styles in a separate CSS file later on -->
-  <style>
-    #header {
-      background-color: #2F5D7C;
-    }
-  </style>
 
   <div id="header" style="color:white">
     Student Service Centre<br>
@@ -80,11 +75,9 @@
           <li>
             <a href="wizardIntro.html" class="dropdown-toggle">Planner</a>
           </li>
-
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Login</a></li>
-
         </ul>
       </div>
       <!-- /.navbar-collapse -->
@@ -96,7 +89,7 @@
       <div class="col-md-8 text-left">
         <ol class="breadcrumb">
           <li><a href="#">Course Schedule</a></li>
-          <li class="active">Welcome to Course Schedule</li>
+          <li class="active">Pre-Reqs Wizard</li>
         </ol>
       </div>
       <div class="col-md-2">
@@ -107,7 +100,6 @@
           <ul class="dropdown-menu">
             <li><a href="#">UBC Vancouver</a></li>
             <li><a href="#">UBC Okanagan</a></li>
-
           </ul>
         </div>
       </div>
@@ -119,47 +111,70 @@
           <ul class="dropdown-menu">
             <li><a href="#">2016 Summer</a></li>
             <li><a href="#">2016 Winter</a></li>
+
           </ul>
         </div>
       </div>
     </div>
   </div>
-  <!-- Everything below this section is the body -->
-  <div class="page-header">
-    <h1>Student Service Centre <small>Course Schedule</small></h1>
+  <!-- Everything below this is the body -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5" id="wizardBox">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Planner</h3>
+          </div>
+          <br>
+
+          <div class="panel-body">
+            <!-- Start jumbotron -->
+            <div class="wizard-div">
+              <div class="centered">
+                <h2>Welcome to the UBC SSC's Course Planner wizard! </h2> <br>
+                If there's a specific upper-level course you're interested in taking, 
+                this wizard will walk you through all the pre-req courses you need to 
+                take in order to reach your goal. 
+              </div>
+            </div>
+            <br>
+            <!-- End jumbotron -->
+            <div class="centered"><a href="wizard.html" class="btn-lg add-btn" role="button">Get Started</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-5" id="courseInfoBox">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Course Info</h3>
+          </div>
+          <!-- Start carousel -->
+          <div class="panel-body">
+          When you hover your mouse over a course code in the wizard, its information will be displayed here. 
+           
+          </div>
+          <!-- End List -->
+
+          <!-- End carousel -->
+        </div>
+      </div>
+      <div class="col-sm-2" id="courseListBox">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Degree Plan</h3>
+          </div>
+          <div class="panel-body">
+          Courses you would like to take will be added here, along with it's pre-reqs. 
+  
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
-
-  <h2>The University of British Columbia - Course Schedule</h2>
-  Welcome to UBC's Course Schedule. On this site you will be able to browse courses, save them to a worklist, view them in
-  a timetable and even register for them!
-  <br><br> This page requires that you have <strong>Javascript</strong> enabled on your browser. To enable Javascript, click
-  here.
-  <br><br>
-  <div class="alert alert-info" role="alert">Please note that the Course Schedule is subject to change. Please review your worklists prior to your registration date.</div>
-
-
-  <strong>Registration Reminder</strong>: One-hour courses are actually only 50 minutes long and one-and-a-half-hour classes
-  are 80 minutes long so you have time to get to your next class
-  <br><br>
-  <h2>Getting started:</h2>
-  Using the drop-down box at the top of the page, <strong>select the campus and the session </strong> for which you wish
-  to view courses.
-  <br><br>
-  <h4>Navigation Menu</h4>
-
-  These services will allow you to browse through courses, standard timetables and specializations offered for the selected
-  campus and session. You can also search for courses which meet various criteria as well as courses taught by specific instructors.
-  <br><br> If you are logged in, you can view your program and registration information. You can add/drop and switch course
-  sections, view your registered courses, timetable and booklist. You can also create worklists to facilitate the registration
-  process.
-
-  <h4>Help</h4>
-
-  These links will help you navigate through the Course Schedule and its features. Watch these <strong>videos</strong> for
-  step-by-step instructions
-  <br><br> Course Schedule Overview
-  <br> Worklist Overview
-  <br> Registration Overview
 
 </body>
 
