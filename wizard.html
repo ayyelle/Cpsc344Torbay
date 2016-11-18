@@ -128,7 +128,10 @@
           </div>
           <br>
           <div class="centered">
-            <h4>Choose pre-reqs for <strong><span id="currentCourse"></span></strong>:</h4>
+         <label for="courseToLookUp" id = "labelForCourseToLookUp"><h4>Course to Look Up:</h4></label>
+  <input type="text" class="form-control" id="courseToLookUp">
+  <button class="btn-lg add-btn" onclick="getCourse()" id="courseToLookUpButton">Get Pre-Reqs</button>
+            <h4 id ="labelForChoosePreReq">Choose pre-reqs for <strong><span id="currentCourse"></span></strong>:</h4>
           </div>
           <div class="panel-body">
             <!-- Start jumbotron -->
@@ -140,7 +143,7 @@
               </div>
             </div>
             <!-- End jumbotron -->
-            <div class="centered"><button class="btn-lg add-btn" onclick="addToPlan()">Continue</button></div>
+            <div class="centered"><button class="btn-lg add-btn" onclick="addToPlan()" id="addToPlanButton">Continue</button></div>
           </div>
         </div>
       </div>

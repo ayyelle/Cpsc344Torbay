@@ -3,7 +3,7 @@ var myDegree = {};
 var orderedCourseList = [];
 var wizardHistory = ["CPSC340"];
 var page = 0;
-var currentCourse = "CPSC340";
+var currentCourse = null;
 var currentPR = 1;
 var next_pr = 2;
 var autoAdd = { "default": [], "alt_a": [], "alt_b": [] }
@@ -23,20 +23,43 @@ var orderedSet = {
 }
 
 $(document).ready(function () {
-    $.getJSON("db.json", function (data) {
-        db = data;
-        parse(db, currentCourse);
-        if (data[currentCourse].prereqs !== null) {
-            updateInstructions();
-            $("#dropdown").html(dropdowns(data[currentCourse].prereqs));
-        } else {
-            $("#dropdown").html("<br>");
-        }
-        addToMyDegree("CPSC340");
-        sortCourses();
-        updateCourseList();
-    });
+	 $("#addToPlanButton").hide();
+	 $("#labelForChoosePreReq").hide();
 });
+
+function getCourse(){
+	   $.getJSON("db.json", function (data) {
+	        db = data;
+	        
+	        var courseEntered = $('#courseToLookUp').val().replace(/ /g,'');
+	        console.log(courseEntered);
+	        courseEntered = courseEntered.toUpperCase();
+	        console.log(courseEntered);
+	        if (courseEntered != null){
+	        	currentCourse = courseEntered;
+	        	addToMyDegree(courseEntered);
+	        	addToPlan();
+	        	 parse(db, courseEntered);
+	 	        if (data[courseEntered].prereqs !== null) {
+	 	        	$('#courseToLookUp').hide();
+	 	        	$("#labelForCourseToLookUp").hide();
+	 	        	$("#courseToLookUpButton").hide();
+	 	            updateInstructions();
+	 	            $("#dropdown").html(dropdowns(data[courseEntered].prereqs));
+	 	        } else {
+	 	            $("#dropdown").html("<br>");
+	 	        }
+	 	        
+	 	       //addToMyDegree(courseEntered);
+	 	       //addToPlan();
+	 	        sortCourses();
+		        updateCourseList();
+		        $("#labelForChoosePreReq").show();
+		        $("#addToPlanButton").show();
+	        };
+	        
+});
+};
 
 function updateInstructions() {
     $("#wizard_instructions").html("<p>Pre-reqs " + currentPR + "/" + db[currentCourse].prereqs.length + "</p>");
