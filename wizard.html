@@ -129,7 +129,7 @@
           <br>
           <div class="centered">
          <label for="courseToLookUp" id = "labelForCourseToLookUp"><h4>Course to Look Up:</h4></label>
-  <input type="text" class="form-control" id="courseToLookUp">
+  <input type="text" class="form-control" id="courseToLookUp" onkeypress ="enterKeyInput(event)">
   <button class="btn-lg add-btn" onclick="getCourse()" id="courseToLookUpButton">Get Pre-Reqs</button>
             <h4 id ="labelForChoosePreReq">Choose pre-reqs for <strong><span id="currentCourse"></span></strong>:</h4>
           </div>
