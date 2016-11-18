@@ -35,7 +35,7 @@
                     "MATH302",
                     "STAT302",
                     "MATH318",
-                    "BIO300"
+                    "BIOL300"
                 ],
                 "or": null
             },
@@ -362,7 +362,6 @@
             {
                 "n_of": "one",
                 "courses": [
-                    "PHYS12",
                     "PHYS100"
                 ],
                 "or": null
@@ -427,5 +426,694 @@
         "yr": 1,
         "prereqs": null,
         "coreqs": null
+    },
+    "MATH223": {
+        "title": "MATH 223 Linear Algebra",
+        "info": "Matrices, eigenvectors, diagonalization, orthogonality, linear systems, applications. Intended for Honours students. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "yr": 2,
+        "prereqs": [
+            {
+            "n_of": "one",
+            "courses": [
+                "MATH121"
+            ],
+            "or": [
+                {
+                    "n_of": "one",
+                    "courses": [
+                        "MATH101",
+                        "MATH103",
+                        "MATH105",
+                        "SCIE001"
+                    ],
+                    "or": null
+                }
+            ]
+            }
+        ],
+        "coreqs": null
+    },
+    "MATH226": {
+        "title": "MATH 226 Advanced Calculus I",
+        "info": "Functions of several variables: limits, continuity, differentiability; implicit functions; Taylor's theorem; extrema; Lagrange multipliers; multiple integration, Fubini's theorem; improper integrals. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "yr": 2,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH121"
+                ],
+                "or": [
+                    {
+                        "n_of": "one",
+                        "courses": [
+                            "MATH101",
+                            "MATH103",
+                            "MATH105",
+                            "SCIE001"
+                        ],
+                        "or": null
+                    }
+                ]
+            }
+        ],
+        "coreqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH152",
+                    "MATH221",
+                    "MATH223"
+                ],
+                "or": null
+            }
+        ]
+    },
+    "MATH253": {
+        "title": "MATH 253 Multivariable Calculus",
+        "info": "Partial and directional derivatives; maxima and minima; Lagrange multipliers and second derivative test; multiple integrals and applications. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "yr": 2,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH101",
+                    "MATH103",
+                    "MATH105",
+                    "MATH121",
+                    "SCIE001"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "MATH263": {
+        "title": "MATH 263 Multivariable and Vector Calculus",
+        "info": "Partial and directional derivatives, multiple integrals, divergence, gradient, curl, vector fields, potentials, line and surface integrals, theorems of Gauss, Green and Stokes. For students in Electrical and Computer Engineering. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "yr": 2,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "SCIE001"
+                ],
+                "or": [
+                    {
+                        "n_of": "one",
+                        "courses": [
+                            "PHYS101",
+                            "PHYS107",
+                            "PHYS153"
+                        ],
+                        "or": null
+                    },
+                    {
+                        "n_of": "one",
+                        "courses": [
+                            "PHYS102",
+                            "PHYS108",
+                            "PHYS153"
+                        ],
+                        "or": null
+                    },
+                    {
+                        "n_of": "one",
+                        "courses": [
+                            "MATH101",
+                            "MATH103",
+                            "MATH105",
+                            "MATH121"
+                        ],
+                        "or": null
+                    }
+                ]
+            }
+        ],
+        "coreqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH152",
+                    "MATH221",
+                    "MATH223"
+                ],
+                "or": null
+            }
+        ]
+    },
+    "STAT203": {
+        "title": "STAT 203 Statistical Methods",
+        "info": "Organizing, displaying and summarizing data. Inference estimation and testing for elementary probability models. Not for credit towards a B.Sc. (Consult the Credit Exclusion list within the Faculty of Science section in the Calendar.)",
+        "credits": 3,
+        "yr": 1,
+        "prereqs": null,
+        "coreqs": null
+    },
+    "STAT241": {
+        "title": "STAT 241 Introductory Probability and Statistics",
+        "info": "Probability models, random variables and vectors, estimation, testing, regression, analysis of variance, goodness of fit, quality control. (Consult the Credit Exclusion list within the Faculty of Science section of the Calendar).",
+        "credits": 3,
+        "yr": 2,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH101",
+                    "MATH103",
+                    "MATH105",
+                    "MATH121",
+                    "SCIE001"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "STAT251": {
+        "title": "STAT 251 Elementary Statistics",
+        "info": "Probability, discrete and continuous random variables, joint probability distributions, estimation, hypothesis testing, regression, analysis of variance, goodness of fit. (Consult the Credit Exclusion list within the Faculty of Science section of the Calendar).",
+        "credits": 3,
+        "yr": 2,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH101",
+                    "MATH103",
+                    "MATH105",
+                    "MATH121",
+                    "SCIE001"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "MATH302": {
+        "title": "MATH 302 Introduction to Probability",
+        "info": "Basic notions of probability, random variables, expectation and conditional expectation, limit theorems. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "yr": 3,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH200",
+                    "MATH217",
+                    "MATH226",
+                    "MATH253",
+                    "MATH263"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "STAT302": {
+        "title": "STAT 302 Introduction to Probability",
+        "info": "Basic notions of probability, random variables, expectation and conditional expectation, limit theorems. (Consult the Credit Exclusion list within the Faculty of Science section in the Calendar.)",
+        "credits": 3,
+        "yr": 3,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH200",
+                    "MATH226",
+                    "MATH217",
+                    "MATH253",
+                    "MATH263"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "MATH318": {
+        "title": "MATH 318 Probability with Physical Applications",
+        "info": "Random variables, discrete and continuous distributions. Random walk, Markov chains, Monte Carlo methods. Characteristic functions, limit laws. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "yr": 3,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH152",
+                    "MATH221",
+                    "MATH223"
+                ],
+                "or": null
+            },
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH215",
+                    "MATH255",
+                    "MATH256",
+                    "MATH265"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH256",
+                    "MATH257",
+                    "MATH267",
+                    "MATH316"
+                ],
+                "or": null
+            }
+        ]
+    },
+    "BIOL300": {
+        "title": "BIOL 300 Fundamentals of Biostatistics",
+        "info": "Statistical procedures for biological research; estimation, hypothesis testing, goodness of fit, analysis of variance and regression; use of computers for statistical analysis. Please consult the Faculty of Science Credit Exclusion Lists: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "yr": 3,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "SCIE001"
+                ],
+                "or": [
+                    {
+                        "n_of": "one",
+                        "courses": [
+                            "BIOL121"
+                        ],
+                        "or": null
+                    },
+                    {
+                        "n_of": "one",
+                        "courses": [
+                            "MATH101",
+                            "MATH103",
+                            "MATH105",
+                            "MATH121"
+                        ],
+                        "or": null
+                    }
+                ]
+            }
+        ],
+        "coreqs": null
+    },
+    "MATH101": {
+        "title": "MATH 101 Integral Calculus with Applications to Physical Sciences and Engineering",
+        "info": "The definite integral, integration techniques, applications, modeling, infinite series. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "yr": 1,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH100",
+                    "MATH102",
+                    "MATH104",
+                    "MATH110",
+                    "MATH111",
+                    "MATH120",
+                    "MATH180",
+                    "MATH184"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "MATH103": {
+        "title": "MATH 103 Integral Calculus with Applications to Life Sciences",
+        "info": "Antiderivatives and definite integrals, infinite series, applications to probability and dynamical systems. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "yr": 1,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH100",
+                    "MATH102",
+                    "MATH104",
+                    "MATH110",
+                    "MATH111",
+                    "MATH120",
+                    "MATH180",
+                    "MATH184"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "MATH105": {
+        "title": "MATH 105 Integral Calculus with Applications to Commerce and Social Sciences",
+        "info": "Antiderivatives, the definite integral, techniques of integration, infinite series, partial derivatives, maxima and minima with constraints, discrete and continuous random variables. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "yr": 1,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH100",
+                    "MATH102",
+                    "MATH104",
+                    "MATH110",
+                    "MATH111",
+                    "MATH120",
+                    "MATH180",
+                    "MATH184"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "MATH121": {
+        "title": "MATH 121 Honours Integral Calculus",
+        "info": "Definite integrals and the Fundamental Theorem of Calculus, techniques and applications of integration, infinite series. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414",
+        "credits": 4,
+        "yr": 1,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH120"
+                ],
+                "or": [
+                    {
+                        "n_of": "one",
+                        "courses": [
+                            "MATH100",
+                            "MATH102",
+                            "MATH104",
+                            "MATH180",
+                            "MATH184"
+                        ],
+                        "or": null
+                    }
+                ]
+            }
+        ],
+        "coreqs": null
+    },
+    "SCIE001": {
+        "title": "SCIE 001 Science One",
+        "info": "An innovative first-year multidisciplinary course incorporating biology, chemistry, mathematics, and physics with a strong focus on the connections between these traditional disciplines. See the Science One website (www.scienceone.ubc.ca) for further information and the application process for admission to SCIE 001.",
+        "credits": 25,
+        "yr": 1,
+        "prereqs": null,
+        "coreqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "BIOL140"
+                ],
+                "or": null
+            }
+        ]
+    },
+    "MATH111": {
+        "title": "MATH 111 Finite Mathematics",
+        "info": "Intended for students not majoring in Mathematics or the Sciences who want some exposure to mathematical thinking. Logic, set theory, combinatorics, probability theory, matrix algebra, linear programming, graphs, and networks. This course cannot be taken for credit towards a B.Sc. degree.",
+        "credits": 3,
+        "yr": 1,
+        "prereqs": null,
+        "coreqs": null
+    },
+    "MATH100": {
+        "title": "MATH 100 Differential Calculus with Applications to Physical Sciences and Engineering",
+        "info": "Derivatives of elementary functions. Applications and modeling: graphing, optimization. Consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "yr": 1,
+        "prereqs": null,
+        "coreqs": null
+    },
+    "MATH102": {
+        "title": "MATH 102 Differential Calculus with Applications to Life Sciences",
+        "info": "Functions, derivatives, optimization, growth and decay, discrete probability. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "yr": 1,
+        "prereqs": null,
+        "coreqs": null
+    },
+    "MATH104": {
+        "title": "MATH 104 Differential Calculus with Applications to Commerce and Social Sciences",
+        "info": "Derivatives and rates of change, exponential and trigonometric functions, Newton's method, Taylor polynomials, maxima and minima, and graphing. Please consult the Faculty of Science Credit Exclusion List: www.calendar.ubc.ca/vancouver/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "yr": 1,
+        "prereqs": null,
+        "coreqs": null
+    },
+    "MATH110": {
+        "title": "MATH 110 Differential Calculus",
+        "info": "Topics as for MATH 100, but including relevant topics from algebra, geometry, functions, trigonometry, logarithms, and exponentials.",
+        "credits": 6,
+        "yr": 1,
+        "prereqs": null,
+        "coreqs": null
+    },
+    "MATH120": {
+        "title": "MATH 120 Honours Differential Calculus",
+        "info": "Limits, derivatives, Mean Value Theorem and applications, elementary functions, optimization, Taylor series, approximation. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 4,
+        "yr": 1,
+        "prereqs": null,
+        "coreqs": null
+    },
+    "MATH180": {
+        "title": "MATH 180 Differential Calculus with Physical Applications",
+        "info": "Topics as for Math 100; intended for students with no previous knowledge of Calculus. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414. Not for credit for students with AP Calculus AB, AP Calculus BC, or a passing score on the UBC-SFU-UVIC-UNBC Calculus Challenge Examination.",
+        "credits": 4,
+        "yr": 1,
+        "prereqs": null,
+        "coreqs": null
+    },
+    "MATH184": {
+        "title": "MATH 184 Differential Calculus for Social Science and Commerce",
+        "info": "Topics as for Math 104; intended for students with no previous knowledge of Calculus. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414. Not for credit for students with AP Calculus AB, AP Calculus BC, or a passing score on the UBC-SFU-UVIC-UNBC Calculus Challenge Examination.",
+        "credits": 4,
+        "yr": 1,
+        "prereqs": null,
+        "coreqs": null
+    },
+    "CPSC121": {
+        "title": "CPSC 121 Models of Computation",
+        "info": "Physical and mathematical structures of computation. Boolean algebra and combinations logic circuits; proof techniques; functions and sequential circuits; sets and relations; finite state machines; sequential instruction execution.",
+        "credits": 4,
+        "yr": 1,
+        "prereqs": null,
+        "coreqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "CPSC110"
+                ],
+                "or": null
+            }
+        ]
+    },
+    "EECE210": {
+        "title": "EECE 210 Principles of Software Construction",
+        "info": "Design, implementation, reasoning about software systems: abstraction and specification of software, testing, verification, abstract data types, object-oriented design, type hierarchies, concurrent software design.",
+        "credits": 4,
+        "yr": 2,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "APSC160"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "EECE309": {
+        "title": "EECE 309 Principles of Software Construction",
+        "info": "Design, implementation, reasoning about software systems: abstraction and specification of software, testing, verification, abstract data types, object-oriented design, type hierarchies, concurrent software design.",
+        "credits": 4,
+        "yr": 3,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "APSC160"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "MATH215": {
+        "title": "MATH 215 Elementary Differential Equations I",
+        "info": "First-order equations; linear equations; linear systems; Laplace transforms; numerical methods; trajectory analysis of plane nonlinear systems. Applications of these topics will be emphasized. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "yr": 2,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH101",
+                    "MATH103",
+                    "MATH105",
+                    "MATH121",
+                    "SCIE001"
+                ],
+                "or": null
+            },
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH152",
+                    "MATH221",
+                    "MATH223"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH200",
+                    "MATH217",
+                    "MATH226",
+                    "MATH253",
+                    "MATH263"
+                ],
+                "or": null
+            }
+        ]
+    },
+    "MATH255": {
+        "title": "MATH 255 Ordinary Differential Equations",
+        "info": "Review of linear systems; nonlinear equations and applications; phase plane analysis; Laplace transforms; numerical methods. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 3,
+        "yr": 2,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH101",
+                    "MATH103",
+                    "MATH105",
+                    "MATH121",
+                    "SCIE001"
+                ],
+                "or": null
+            },
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH152",
+                    "MATH221",
+                    "MATH223"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH200",
+                    "MATH217",
+                    "MATH226",
+                    "MATH253",
+                    "MATH263"
+                ],
+                "or": null
+            }
+        ]
+    },
+    "MATH256": {
+        "title": "MATH 256 Differential Equations",
+        "info": "Linear ordinary differential equations, Laplace transforms, Fourier series and separation of variables for linear partial differential equations. Tutorial session focuses on examples from chemical and biological engineering. Consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfmtree=12,215,410,414.",
+        "credits": 3,
+        "yr": 2,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH101",
+                    "MATH103",
+                    "MATH105",
+                    "MATH121",
+                    "SCIE001"
+                ],
+                "or": null
+            },
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH152",
+                    "MATH221",
+                    "MATH223"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH200",
+                    "MATH217",
+                    "MATH226",
+                    "MATH253",
+                    "MATH263"
+                ],
+                "or": null
+            }
+        ]
+    },
+    "MATH265": {
+        "title": "MATH 265 Linear Differential Equations",
+        "info": "Linear ordinary differential equations. Complex numbers, Laplace transforms, frequency reponse, resonance, step response, systems. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 2,
+        "yr": 2,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH101",
+                    "MATH103",
+                    "MATH105",
+                    "MATH121",
+                    "SCIE001"
+                ],
+                "or": null
+            },
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH152",
+                    "MATH221",
+                    "MATH223"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH200",
+                    "MATH217",
+                    "MATH226",
+                    "MATH253",
+                    "MATH263"
+                ],
+                "or": null
+            }
+        ]
     }
 }
