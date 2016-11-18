@@ -21,5 +21,6 @@ MATH 121
 
 Is inaccurate without accounting for high school prereqs
 PHYS 101
+BIOL 111
 ALL THE FIRST YEAR MATH COURSES
 
