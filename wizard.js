@@ -27,6 +27,13 @@ $(document).ready(function () {
 	 $("#labelForChoosePreReq").hide();
 });
 
+function enterKeyInput(e){
+	  if (e.keyCode == 13) {
+	       getCourse();
+	    };
+	
+};
+
 function getCourse(){
 	   $.getJSON("db.json", function (data) {
 	        db = data;
