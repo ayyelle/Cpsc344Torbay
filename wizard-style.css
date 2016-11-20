@@ -18,6 +18,16 @@
     .add-btn:hover {
       background-color: #95D7ED;
     }
+
+    .reset-btn {
+      background-color: #FF0000;
+      color: white;
+      border: 0;
+    }
+
+    .reset-btn:hover {
+        background-color: #FF8888;
+    }
     
     .in-plan {
       border-style: none;
