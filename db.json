@@ -1115,5 +1115,29 @@
                 "or": null
             }
         ]
+    },
+    "BIOL121": {
+        "title": "BIOL 121 Genetics, Evolution and Ecology",
+        "info": "Principles of storage and transmission of genetic variation; origin and evolution of species and their ecological interactions.",
+        "credits": 3,
+        "yr": 1,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "BIOL111"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "BIOL111": {
+        "title": "BIOL 111 Introduction to Modern Biology",
+        "info": "Concepts fundamental to biological issues, such as the genetic basis of biological variation, evolution, infectious diseases, causes of cancer, population growth, and human effects on ecosystems. Not open to students who have credit for Biology 12 (including AP, IB).",
+        "credits": 3,
+        "yr": 1,
+        "prereqs": null,
+        "coreqs": null
     }
 }
