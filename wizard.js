@@ -25,6 +25,7 @@ var orderedSet = {
 $(document).ready(function () {
 	 $("#addToPlanButton").hide();
 	 $("#labelForChoosePreReq").hide();
+	 $("#resetButton").hide();
 });
 
 function enterKeyInput(e){
@@ -63,6 +64,7 @@ function getCourse(){
 		        updateCourseList();
 		        $("#labelForChoosePreReq").show();
 		        $("#addToPlanButton").show();
+		        $("#resetButton").show();
 	        };
 	        
 });
