@@ -52,6 +52,7 @@ function getCourse(){
 	 	        	$('#courseToLookUp').hide();
 	 	        	$("#labelForCourseToLookUp").hide();
 	 	        	$("#courseToLookUpButton").hide();
+	 	        	$("#introGreeting").hide();
 	 	            updateInstructions();
 	 	            $("#dropdown").html(dropdowns(data[courseEntered].prereqs));
 	 	        } else {
@@ -65,6 +66,7 @@ function getCourse(){
 		        $("#labelForChoosePreReq").show();
 		        $("#addToPlanButton").show();
 		        $("#resetButton").show();
+		       
 	        };
 	        
 });
