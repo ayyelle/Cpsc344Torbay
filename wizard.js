@@ -75,6 +75,7 @@ function getCourse(){
 	 	        	$("#labelForCourseToLookUp").hide();
 	 	        	$("#courseToLookUpButton").hide();
 	 	        	$("#introGreeting").hide();
+	 	        	$("#showSecondBoxButton").hide();
 	 	        	$("#courseToLookUp2").hide();
 	 	        	$("#hideSecondBoxButton").hide();
 	 	            updateInstructions();
