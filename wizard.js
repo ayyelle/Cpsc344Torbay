@@ -22,6 +22,9 @@ var orderedSet = {
     }
 }
 
+var secondCourseExists = false; 
+var secondCourse = null;
+
 $(document).ready(function () {
 	 $("#addToPlanButton").hide();
 	 $("#labelForChoosePreReq").hide();
@@ -35,6 +38,21 @@ function enterKeyInput(e){
 	
 };
 
+function showSecondBox(){
+	$("#courseToLookUp2").show();
+	$("#hideSecondBoxButton").show();
+	$("#showSecondBoxButton").hide();
+		
+}
+
+function hideSecondBox(){
+	$("#courseToLookUp2").hide();
+	$("#hideSecondBoxButton").hide();
+	$("#showSecondBoxButton").show();
+	$("#courseToLookUp2").val('');
+		
+}
+
 function getCourse(){
 	   $.getJSON("db.json", function (data) {
 	        db = data;
@@ -43,6 +61,10 @@ function getCourse(){
 	        console.log(courseEntered);
 	        courseEntered = courseEntered.toUpperCase();
 	        console.log(courseEntered);
+	        var secondCourse = $('#courseToLookUp2').val().replace(/ /g,'');
+	        secondCourseEntered = secondCourse.toUpperCase();
+	        console.log(secondCourseEntered);
+	        
 	        if (courseEntered != null){
 	        	currentCourse = courseEntered;
 	        	addToMyDegree(courseEntered);
@@ -53,11 +75,23 @@ function getCourse(){
 	 	        	$("#labelForCourseToLookUp").hide();
 	 	        	$("#courseToLookUpButton").hide();
 	 	        	$("#introGreeting").hide();
+	 	        	$("#courseToLookUp2").hide();
+	 	        	$("#hideSecondBoxButton").hide();
 	 	            updateInstructions();
 	 	            $("#dropdown").html(dropdowns(data[courseEntered].prereqs));
 	 	        } else {
 	 	            $("#dropdown").html("<br>");
 	 	        }
+	 	        
+	 	       if (secondCourseEntered != "" && secondCourseEntered != courseEntered){
+		        	console.log("second course entered");
+		        	secondCourseExists = true;
+		        	secondCourse = secondCourseEntered;
+		            addToMyDegree(secondCourseEntered);
+		        	addToPlan();
+		        };
+	 	        
+	 	        
 	 	        
 	 	       //addToMyDegree(courseEntered);
 	 	       //addToPlan();
@@ -336,7 +370,8 @@ function nextCourse() {
         currentCourse = nc;
         parse(db, currentCourse);
         $("#dropdown").html(dropdowns(db[currentCourse].prereqs));
-    } else {
+    }
+    else {
         alert("You're done!");
     }
 }
