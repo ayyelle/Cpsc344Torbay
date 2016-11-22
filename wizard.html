@@ -148,8 +148,26 @@
               </div>
             </div>
             <div class="centered">
-         <label for="courseToLookUp" id = "labelForCourseToLookUp"><h4>Course to Look Up:</h4></label>
-  <input type="text" class="form-control" id="courseToLookUp" onkeypress ="enterKeyInput(event)">
+         <label for="courseToLookUp" id = "labelForCourseToLookUp" class="pull-left"><h4>Course to Look Up:</h4></label>
+         <div class="row">
+      <div class="col-sm-10">
+      <input type="text" class="form-control" id="courseToLookUp">
+      </div>
+      <div class="col-sm-2">
+      <button type="button" class="btn btn-outline-warning" onclick="showSecondBox()" id="showSecondBoxButton">+</button>
+      </div>
+      </div>
+      <br>
+      <div class="row">
+      <div class="col-sm-10">
+      <input type="text" class="form-control" id="courseToLookUp2">
+      </div>
+      <div class="col-sm-2">
+      <button type="button" class="btn btn-outline-warning" onclick="hideSecondBox()" id="hideSecondBoxButton">-</button>
+      </div>
+      </div>
+  
+  
   <button class="btn-lg add-btn" onclick="getCourse()" id="courseToLookUpButton">Get Pre-Reqs</button>
             
           </div>
