@@ -89,6 +89,8 @@ function getCourse(){
 		        	secondCourse = secondCourseEntered;
 		            addToMyDegree(secondCourseEntered);
 		        	addToPlan();
+		        	updateInstructions();
+	 	            $("#dropdown").html(dropdowns(data[courseEntered].prereqs));
 		        };
 	 	        
 	 	        
