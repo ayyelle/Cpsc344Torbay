@@ -17,6 +17,12 @@
     display: none;
     }
 
+    .checked {
+      float: right;
+      color: white;
+      margin-right: 5px;
+      margin-top:3px;
+    }
     
     .add-btn {
       background-color: #28B0DE;
@@ -201,13 +207,6 @@
       font-size: 20px;
       padding:-10px;
     }
-    #credit-count {
-      background-color:  #28B0DE;
-      padding: 2px 5px 2px 5px;
-      color: white;
-      border-radius: 5px;
-    }
     hr {
-      border-style: solid;
-      color: black;
+      border-top: 1px dashed grey;
     }

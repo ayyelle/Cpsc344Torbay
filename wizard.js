@@ -361,7 +361,11 @@ function getCourseList(yr, sem) {
     if (orderedSet[yr][sem] !== {}) {
         for (var course in orderedSet[yr][sem]) {
             list += "<div class='centered'><button class='in-plan plan-btn' onclick=wizardPage('" + course + "') onmouseover=goToCourse('" + course + "')>"
-            list += course + "</button></div>"
+                + course + "</button>"
+            if (reqsMet(course)) {
+                list += "<span class='checked'>&#x2713</span>"
+            }
+            list += "</div>"
         }
     }
     return list;
@@ -507,7 +511,7 @@ function dropdown(r, n) {
     var rtn = "";
     if (r[n].or !== null) {
         cl = "alt_b";
-        rtn = orDropDowns(r, n, pr_id);
+        rtn = "<hr>" + orDropDowns(r, n, pr_id);
         // newOrDropDowns(r, n, pr_id);
     }
     else if (r[n].n_of === "one" && r[n].courses.length > 1) {
@@ -556,12 +560,12 @@ function orDropDowns(r, n, id) {
         }
     }
     rtn += "</ul></div></div>"
-        + "<div id='or'><h4>OR</h4></div><div class='or-list'><h3>B</h3><div class='custom-radio'><input id='alt_b' type='radio' onclick=enable('alt_b') name='optradio'></div>"
+        + "<div id='or'><h4>OR</h4><div class='vr'></div></div><div class='or-list'><h3>B</h3><div class='custom-radio'><input id='alt_b' type='radio' onclick=enable('alt_b') name='optradio'></div>"
     //     + dropdowns(r[n].or)
     for (var i = 0; i < r[n].or.length; i++) {
         rtn += orDropDown(r[n].or, i);
     }
-    rtn += "</div>"
+    rtn += "</div><br><hr>"
     return rtn;
 }
 
