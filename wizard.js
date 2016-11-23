@@ -1,11 +1,11 @@
 var db;
 var myDegree = {};
-var wizardHistory = ["CPSC340"];
 var page = 0;
 var currentCourse = "CPSC340";
 var currentPR = 1;
 var next_pr = 2;
-var autoAdd = { "default": [], "alt_a": [], "alt_b": [] }
+var autoAdd = { "default": [], "alt_a": { "all": [], "dropdowns": [] }, "alt_b": { "all": [], "dropdowns": [] } }
+var fixedCourses = { "CPSC340": true };
 var options = [];
 var dropDownSet = {};
 var orderedSet = {
@@ -40,24 +40,18 @@ $(document).ready(function () {
 });
 
 function updateDropdowns() {
-    //   console.log("DD SET: " + JSON.stringify(dropDownSet));
     for (var dd in dropDownSet) {
-        //  console.log(dropDownSet[dd].options.length > 0);
         if (dropDownSet[dd].options.length > 0) {
             for (var i = 0; i < dropDownSet[dd].options.length; i++) {
-
-                //      console.log("option: " + dropDownSet[dd].options[i] + (dropDownSet[dd].options[i] in myDegree) + JSON.stringify(myDegree));
-
                 if (dropDownSet[dd].options[i] in myDegree) {
                     updateDropdown(dropDownSet[dd].options[i], dd);
-                    /*
-
-                   */
-                    //     console.log("ID: " + dd + " TEXT: " + dropDownSet[dd].options[i]);
                 }
-
             }
         }
+    }
+    if (myDegree[currentCourse].auto !== "default") {
+        $("#" + myDegree[currentCourse].auto).prop("checked", true);
+        // enable(myDegree[currentCourse].auto);
     }
 }
 
@@ -66,15 +60,14 @@ function updateInstructions() {
 }
 
 function addToMyDegree(course) {
+    console.log("In my degree? " + myDegree.hasOwnProperty(course));
     if (!myDegree.hasOwnProperty(course)) {
         myDegree[course] = {
-            "leadsTo": 1,
             "reqsMet": false,
-            "prereqs": {}
+            "prereqs": {},
+            "auto": "default"
         }
-    } else {
-        myDegree[course].leadsTo++
-    }
+    } 
     if (reqsMet(course)) {
         myDegree[course].reqsMet = true;
     }
@@ -100,7 +93,7 @@ function parse(data, course) {
 
 function removeCourseTree(c) {
     if (c !== undefined) {
-        console.log("getCourseTree for " + c);
+        //console.log("getCourseTree for " + c);
         cTree = getCourseTree(c, {});
         for (var course in cTree) {
             if (cTree[course] === true)
@@ -112,17 +105,16 @@ function removeCourseTree(c) {
 
 function getCourseTree(c, toRemove) {
     var tr = toRemove;
-    tr[c] = false;
-    if (myDegree[c].leadsTo === 1) {
+    if (myDegree[c] !== undefined) {
         tr[c] = true;
-    }
-    if (myDegree[c].reqsMet === true) {
-        for (var pr in myDegree[c].prereqs) {
-            tr[pr] = false;
-            if (myDegree[c].leadsTo === 1) {
+        if (c in fixedCourses){
+            tr[c] = false;
+        }
+        if (reqsMet(c) === true) {
+            for (var pr in myDegree[c].prereqs) {
                 tr[pr] = true;
+                tr = combineObjs(tr, getCourseTree(pr, tr));
             }
-            tr = combineObjs(tr, getCourseTree(pr, tr));
         }
     }
     return tr;
@@ -248,8 +240,10 @@ function sortCourses() {
             if (orderedSet[yr].sem1 !== {}) {
                 // For each course in semester 1 ...
                 for (var course in orderedSet[yr].sem1) {
+
                     // ... get prereq if one exists in current semester block
                     if (getPrereq(course, orderedSet[yr].sem1)) {
+
                         delete orderedSet[yr].sem1[course];
                         orderedSet[yr].sem2[course] = true;
                     }
@@ -258,13 +252,16 @@ function sortCourses() {
             }
         }
     }
-    console.log(JSON.stringify(orderedSet));
+    // console.log("ORDERED: " + JSON.stringify(orderedSet));
 }
 
 function getPrereq(c, semester) {
-    if (myDegree[c].prereq !== undefined) {
+    // console.log("get prereq for " + c + " in " + JSON.stringify(semester));
+    if (myDegree[c].prereqs !== undefined) {
+        //   console.log("prereqs defined");
         // For each prereq in myDegree for course c ...
         for (var x in myDegree[c].prereqs) {
+            //   console.log("FOUND: " + x)
             // ...if found, return selected prereq of course that is also in given semester
             if (x in semester) {
                 return true;
@@ -285,7 +282,7 @@ function getCourseList(yr, sem) {
 }
 
 function wizardPage(course) {
-    console.log("go to wizard page for " + course)
+    //  console.log("go to wizard page for " + course)
     currentCourse = course;
     parse(db, currentCourse);
     $("#dropdown").html(dropdowns(db[currentCourse].prereqs))
@@ -307,8 +304,10 @@ function newCourseBtn(course, id, cl) {
 
 function selectCourse(course, id) {
     var lastCourse = $("#" + id + "").data("course");
+    console.log("LAST COURSE: " + lastCourse)
     updateDropdown(course, id);
     removeCourseTree(lastCourse);
+    delete myDegree[currentCourse].prereqs[lastCourse];
     addToMyDegree(course);
     goToCourse(course);
     updateCourseList();
@@ -318,6 +317,7 @@ function selectCourse(course, id) {
 function updateDropdown(course, id) {
     $("#" + id + "").html(course + " " + "<span class='caret'></span>");
     $("#" + id + "").data("course", course);
+    /*
     if (course in myDegree) {
         $("#" + id).css("background-color", "#28B0DE");
         $("#" + id).css("color", "white");
@@ -325,6 +325,7 @@ function updateDropdown(course, id) {
         $("#" + id).css("background-color", "white");
         $("#" + id).css("color", "black");
     }
+    */
 }
 
 function removeCourse(course) {
@@ -388,20 +389,21 @@ function orReqsMet(c, r) {
 }
 
 function nextCourse() {
-    autoAdd = { "default": [], "alt_a": [], "alt_b": [] };
+    autoAdd = { "default": [], "alt_a": { "all": [], "dropdowns": [] }, "alt_b": { "all": [], "dropdowns": [] } }
     var nc = getNextCourse();
     if (nc !== null) {
         currentCourse = nc;
         parse(db, currentCourse);
         $("#dropdown").html(dropdowns(db[currentCourse].prereqs));
     } else {
+        updateCourseList();
         alert("You're done!");
     }
 }
 
 function getNextCourse() {
     for (var c in myDegree) {
-        if (myDegree[c].reqsMet === false) {
+        if (reqsMet(c) === false) {
             return c;
         }
     }
@@ -449,32 +451,33 @@ function dropdown(r, n) {
         }
         rtn += "</ul>"
     }
-    console.log("DD: " + pr_id);
+    //  console.log("DD: " + pr_id);
     return rtn;
 }
 
 function orDropDowns(r, n, id) {
     //create dropdowns and course buttons for "OR" prereq selection
     var id_b = "prdrop1b"
-    var rtn = "<div class='radio'><label><input type='radio' name='optradio' onclick=enable('alt_a','alt_b')>A</label></div>"
+    var rtn = "<div class='radio'><label><input id='alt_a' type='radio' name='optradio' onclick=enable('alt_a')>A</label></div>"
     if (r[n].courses.length > 1) {
         dropDownSet[id] = { "options": [] };
-        console.log("OR DDs: " + id);
+        // console.log("OR DDs: " + id);
         rtn += "<div class='dropdown'><button disabled='true' onmouseover=ddPreviewCourse('" + id + "') class='whiteBtn alt_a' type='button' data-toggle='dropdown'"
             + "id='" + id + "'>"
             + "Choose One <span class='caret'></span>"
             + "</button><ul class='dropdown-menu center-dropdown'>"
+        autoAdd.alt_a.dropdowns.push(id);
     }
     for (var i = 0; i < r[n].courses.length; i++) {
         rtn += "<li>" + newCourseBtn(r[n].courses[i], id, "alt_a") + "</li>";
         if (r[n].courses.length === 1) {
-            autoAdd.alt_a.push(r[n].courses[i]);
+            autoAdd.alt_a.all.push(r[n].courses[i]);
         } else {
             dropDownSet[id].options.push(r[n].courses[i]);
         }
     }
     rtn += "</ul></div>"
-        + "<div class='radio'><label><input type='radio' onclick=enable('alt_b','alt_a') name='optradio'>B</label></div>"
+        + "<div class='radio'><label><input id='alt_b' type='radio' onclick=enable('alt_b') name='optradio'>B</label></div>"
     //     + dropdowns(r[n].or)
     for (var i = 0; i < r[n].or.length; i++) {
         rtn += orDropDown(r[n].or, i);
@@ -492,6 +495,7 @@ function orDropDown(r, n) {
             + "id='" + pr_id + "' disabled='true'>"
             + "Choose One <span class='caret'></span>"
             + "</button><ul class='dropdown-menu center-dropdown'>"
+        autoAdd.alt_b.dropdowns.push(pr_id);
         for (var i = 0; i < r[n].courses.length; i++) {
             rtn += "<li>" + newCourseBtn(r[n].courses[i], pr_id, cl) + "</li>";
             dropDownSet[pr_id].options.push(r[n].courses[i]);
@@ -502,25 +506,54 @@ function orDropDown(r, n) {
         rtn += "</ul>"
         for (var i = 0; i < r[n].courses.length; i++) {
             rtn += "<li>" + newCourseBtn(r[n].courses[i], pr_id, cl) + "</li>";
-            autoAdd.alt_b.push(r[n].courses[i]);
+            autoAdd.alt_b.all.push(r[n].courses[i]);
         }
         rtn += "</ul>"
     }
-    console.log("OR DD: " + pr_id);
+    //console.log("OR DD: " + pr_id);
     return rtn;
 }
 
-function enable(en, dis) {
-    $('.' + en).prop("disabled", false);
-    $('.' + dis).prop("disabled", true);
-    for (var i = 0; i < autoAdd[en].length; i++) {
-        addToMyDegree(autoAdd[en][i]);
+function enable(en) {
+    var dis;
+    if (en === "alt_a") {
+        dis = "alt_b"
+    } else {
+        dis = "alt_a"
     }
-    for (var i = 0; i < autoAdd[dis].length; i++) {
-        if (autoAdd[dis][i] in myDegree) {
-            removeCourseTree(autoAdd[dis][i]);
+    console.log("ENABLE/DISABLE");
+    if (en !== myDegree[currentCourse].auto) {
+        myDegree[currentCourse].auto = en;
+        $('.' + en).prop("disabled", false);
+        $('.' + dis).prop("disabled", true);
+        for (var i = 0; i < autoAdd[dis].all.length; i++) {
+            if (autoAdd[dis].all[i] in myDegree) {
+                console.log("remove from degree: " + autoAdd[dis].all[i]);
+                removeCourseTree(autoAdd[dis].all[i]);
+            }
         }
+        for (var i = 0; i < autoAdd[dis].dropdowns.length; i++) {
+            console.log($("#" + autoAdd[dis].dropdowns[i]).data("course"));
+            if ($("#" + autoAdd[dis].dropdowns[i]).data("course") !== undefined) {
+                removeCourseTree($("#" + autoAdd[dis].dropdowns[i]).data("course"));
+            }
+            console.log("DROPDOWN ID: " + autoAdd[dis].dropdowns[i] + " " + $("#" + autoAdd[dis].dropdowns[i]).data("course"));
+        }
+        for (var i = 0; i < autoAdd[en].all.length; i++) {
+            console.log("add to degree: " + autoAdd[en].all[i])
+            addToMyDegree(autoAdd[en].all[i]);
+        }
+        for (var i = 0; i < autoAdd[en].dropdowns.length; i++) {
+            console.log($("#" + autoAdd[en].dropdowns[i]).data("course"));
+            if ($("#" + autoAdd[en].dropdowns[i]).data("course") !== undefined) {
+                addToMyDegree($("#" + autoAdd[en].dropdowns[i]).data("course"));
+            }
+            console.log("DROPDOWN ID: " + autoAdd[en].dropdowns[i] + " " + $("#" + autoAdd[en].dropdowns[i]).data("course"));
+        }
+        updateCourseList();
     }
+
+    console.log("AUTOADD: " + JSON.stringify(autoAdd));
     console.log(JSON.stringify(myDegree));
 }
 
