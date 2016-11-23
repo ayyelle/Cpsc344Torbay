@@ -48,8 +48,8 @@
                     {
                         "n_of": "all",
                         "courses": [
-                            "CPSC260",
-                            "EECE320"
+                            "EECE320",
+                            "CPSC260"
                         ],
                         "or": null
                     },
