@@ -43,6 +43,8 @@ $(document).ready(function () {
     $("#addToPlanButton").hide();
     $("#labelForChoosePreReq").hide();
     $("#resetButton").hide();
+    $("#courseInfoBox").hide();
+    $("#courseListBox").hide();
 });
 
 function enterKeyInput(e) {
@@ -68,6 +70,8 @@ function hideSecondBox() {
 }
 
 function getCourse() {
+    $("#courseInfoBox").show();
+    $("#courseListBox").show();
 	   $.getJSON("db.json", function (data) {
         db = data;
 
@@ -82,6 +86,7 @@ function getCourse() {
         if (courseEntered != null) {
             currentCourse = courseEntered;
             addToMyDegree(courseEntered);
+            fixedCourses[courseEntered] = true;
             addToPlan();
             parse(db, courseEntered);
             if (data[courseEntered].prereqs !== null) {
@@ -103,6 +108,7 @@ function getCourse() {
                 secondCourseExists = true;
                 secondCourse = secondCourseEntered;
                 addToMyDegree(secondCourseEntered);
+                fixedCourses[secondCourseEntered] = true;
                 addToPlan();
                 updateInstructions();
                 $("#dropdown").html(dropdowns(data[courseEntered].prereqs));
@@ -113,6 +119,7 @@ function getCourse() {
             //addToMyDegree(courseEntered);
             //addToPlan();
             sortCourses();
+            updateDropdowns();
             updateCourseList();
             $("#labelForChoosePreReq").show();
             $("#addToPlanButton").show();
