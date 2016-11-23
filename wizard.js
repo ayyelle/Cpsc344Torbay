@@ -127,10 +127,10 @@ function getCourse() {
 
 function countCredits() {
     var credits = 0;
-    var upper = 0; 
+    var upper = 0;
     var lower = 0;
     for (var course in myDegree) {
-        if (db[course].yr > 2){
+        if (db[course].yr > 2) {
             upper += db[course].credits
         } else {
             lower += db[course].credits
@@ -153,7 +153,7 @@ function updateDropdowns() {
     }
     if (myDegree[currentCourse].auto !== "default") {
         $("#" + myDegree[currentCourse].auto).prop("checked", true);
-        // enable(myDegree[currentCourse].auto);
+        enable(myDegree[currentCourse].auto);
     }
 }
 
@@ -231,28 +231,12 @@ function combineObjs(o1, o2) {
     return rtn;
 }
 
-
-function back() {
-    if (page > 0) {
-        parse(db, wizardHistory[page - 1]);
-        page--;
-    }
-}
-
-function forward() {
-    if (page < (wizardHistory.length - 1)) {
-        parse(db, wizardHistory[page + 1]);
-        page++;
-    }
-}
-
 function updateCourseList() {
     sortCourses();
     for (var i = 1; i < 4; i++) {
         var id1 = "#yr" + i + "-1";
         var id2 = "#yr" + i + "-2";
         var yrId = "" + i;
-
         if (JSON.stringify(orderedSet[yrId]["sem1"]) === "{}"
             && JSON.stringify(orderedSet[yrId]["sem2"]) === "{}") {
             $("#yr" + i).prop("hidden", true);
@@ -306,15 +290,7 @@ function goToCourse(c) {
     } else {
         parse(db, null)
     }
-}
-
-function nextPR() {
-    if (currentPR < db[currentCourse].prereqs.length) {
-        currentPR++;
-    }
-    $("#dropdown").html(dropdown(db[currentCourse].prereqs, (currentPR - 1), false));
-    updateInstructions();
-    updateDropdowns();
+    updateCourseList();
 }
 
 function sortCourses() {
@@ -378,7 +354,11 @@ function getCourseList(yr, sem) {
     var list = "";
     if (orderedSet[yr][sem] !== {}) {
         for (var course in orderedSet[yr][sem]) {
-            list += "<div class='centered'><button class='in-plan plan-btn' onclick=wizardPage('" + course + "')>" + course + "</button></div>"
+            list += "<div class='centered'><button class='in-plan plan-btn' onclick=wizardPage('" + course + "')>"
+            if (currentCourse === course) {
+                list += "&#x25ba "
+            }
+            list += course + "</button></div>"
         }
     }
     return list;
@@ -389,6 +369,7 @@ function wizardPage(course) {
     currentCourse = course;
     parse(db, currentCourse);
     $("#dropdown").html(dropdowns(db[currentCourse].prereqs))
+    updateCourseList();
     updateDropdowns();
 }
 
@@ -442,6 +423,7 @@ function addToPlan() {
     if (reqsMet(currentCourse)) {
         myDegree[currentCourse].reqsMet = true;
         nextCourse();
+        updateCourseList();
     }
     updateDropdowns();
 }
