@@ -127,20 +127,19 @@
             <h3 class="panel-title">Planner</h3>
           </div>
           <br>
-          
+
           <div class="panel-body">
             <!-- Start jumbotron -->
-            <div class ="centered">
-            <h4 id ="labelForChoosePreReq">Choose pre-reqs for <strong><span id="currentCourse"></span></strong>:</h4>
+            <div class="centered">
+              <h4 id="labelForChoosePreReq">Choose pre-reqs for <strong><span id="currentCourse"></span></strong>:</h4>
             </div>
             <div class="wizard-div">
               <div class="centered">
-              
-              <div id = "introGreeting">
-              <h2>Welcome to the UBC SSC's Course Planner wizard! </h2> <br>
-                If there's a specific upper-level course you're interested in taking, 
-                this wizard will walk you through all the pre-req courses you need to 
-                take in order to reach your goal. 
+
+                <div id="introGreeting">
+                  <h2>Welcome to the UBC SSC's Course Planner wizard! </h2> <br> If there's a specific upper-level course you're
+                  interested in taking, this wizard will walk you through all the pre-req courses you need to take in order
+                  to reach your goal.
                 </div>
                 <ul class="nav">
                   <li class="dropdown" id="dropdown"></li>
@@ -148,37 +147,36 @@
               </div>
             </div>
             <div class="centered">
-         <label for="courseToLookUp" id = "labelForCourseToLookUp" class="pull-left"><h4>Course to Look Up:</h4></label>
-         <div class="row">
-      <div class="col-sm-10">
-      <input type="text" class="form-control" id="courseToLookUp">
-      </div>
-      <div class="col-sm-2">
-      <button type="button" class="btn btn-outline-warning" onclick="showSecondBox()" id="showSecondBoxButton">+</button>
-      </div>
-      </div>
-      <br>
-      <div class="row">
-      <div class="col-sm-10">
-      <input type="text" class="form-control" id="courseToLookUp2">
-      </div>
-      <div class="col-sm-2">
-      <button type="button" class="btn btn-outline-warning" onclick="hideSecondBox()" id="hideSecondBoxButton">-</button>
-      </div>
-      </div>
-      <br>
-  
-  
-  <button class="btn-lg add-btn" onclick="getCourse()" id="courseToLookUpButton">Get Pre-Reqs</button>
-            
-          </div>
+              <label for="courseToLookUp" id="labelForCourseToLookUp" class="pull-left"><h4>Course to Look Up:</h4></label>
+              <div class="row">
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="courseToLookUp">
+                </div>
+                <div class="col-sm-2">
+                  <button type="button" class="btn btn-outline-warning" onclick="showSecondBox()" id="showSecondBoxButton">+</button>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="courseToLookUp2">
+                </div>
+                <div class="col-sm-2">
+                  <button type="button" class="btn btn-outline-warning" onclick="hideSecondBox()" id="hideSecondBoxButton">-</button>
+                </div>
+              </div>
+              <br>
+
+
+              <button class="btn-lg add-btn" onclick="getCourse()" id="courseToLookUpButton">Get Pre-Reqs</button>
+
+            </div>
             <!-- End jumbotron -->
-            <div class="pull-right"><button class="btn-lg add-btn" onclick="addToPlan()" id = "addToPlanButton">Continue</button></div>
-            <div class="pull-left"><button class="btn-lg reset-btn" onclick="location.reload()" id = "resetButton">Reset</button></div>
+            <div class="pull-right"><button class="btn-lg add-btn" onclick="addToPlan()" id="addToPlanButton">Continue</button></div>
+            <div class="pull-left"><button class="btn-lg reset-btn" onclick="location.reload()" id="resetButton">Reset</button></div>
           </div>
         </div>
       </div>
-
       <div class="col-sm-5" id="courseInfoBox">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -208,26 +206,29 @@
           <div class="panel-heading">
             <h3 class="panel-title">Degree Plan</h3>
           </div>
-          <div class="panel-body">
-            <!-- Start list -->
-            <h5 id="yr1" class="centered">100-level</h5>
-            <div class="year-group">
-              <div class="list-group" id="yr1-1"></div>
-              <div class="list-group" id="yr1-2"></div>
+          <div class="centered">
+            <div>CREDITS: <span id="credit-count"></span></div>
+            Upper: <span id="upper-cr"></span> Lower: <span id="lower-cr"></span></div>
+            <div class="panel-body">
+              <!-- Start list -->
+              <h5 id="yr1" class="centered">100-level</h5>
+              <div class="year-group">
+                <div class="list-group" id="yr1-1"></div>
+                <div class="list-group" id="yr1-2"></div>
+              </div>
+              <h5 id="yr2" class="centered">200-level</h5>
+              <div class="year-group">
+                <div class="list-group" id="yr2-1"></div>
+                <div class="list-group" id="yr2-2"></div>
+              </div>
+              <h5 id="yr3" class="centered">300-level</h5>
+              <div class="year-group">
+                <div class="list-group" id="yr3-1"></div>
+                <div class="list-group" id="yr3-2"></div>
+              </div>
+              <!-- End List -->
             </div>
-            <h5 id="yr2" class="centered">200-level</h5>
-            <div class="year-group">
-              <div class="list-group" id="yr2-1"></div>
-              <div class="list-group" id="yr2-2"></div>
-            </div>
-            <h5 id="yr3" class="centered">300-level</h5>
-            <div class="year-group">
-              <div class="list-group" id="yr3-1"></div>
-              <div class="list-group" id="yr3-2"></div>
-            </div>
-            <!-- End List -->
           </div>
-        </div>
 
       </div>
 
