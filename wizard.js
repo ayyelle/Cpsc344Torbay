@@ -113,14 +113,10 @@ function getCourse() {
                 updateInstructions();
                 $("#dropdown").html(dropdowns(data[courseEntered].prereqs));
             };
-
-
-
             //addToMyDegree(courseEntered);
             //addToPlan();
-            sortCourses();
-            updateDropdowns();
             updateCourseList();
+            updateDropdowns();
             $("#labelForChoosePreReq").show();
             $("#addToPlanButton").show();
             $("#resetButton").show();
@@ -128,6 +124,22 @@ function getCourse() {
         };
     });
 };
+
+function countCredits() {
+    var credits = 0;
+    var upper = 0; 
+    var lower = 0;
+    for (var course in myDegree) {
+        if (db[course].yr > 2){
+            upper += db[course].credits
+        } else {
+            lower += db[course].credits
+        }
+    }
+    $("#credit-count").text(upper + lower);
+    $("#upper-cr").text(upper);
+    $("#lower-cr").text(lower);
+}
 
 function updateDropdowns() {
     for (var dd in dropDownSet) {
@@ -250,6 +262,7 @@ function updateCourseList() {
         updateSemester(i, "sem1", id1);
         updateSemester(i, "sem2", id2);
     }
+    countCredits();
 }
 
 function updateSemester(yrId, semId, id) {
