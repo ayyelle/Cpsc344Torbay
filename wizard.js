@@ -2,7 +2,7 @@ var db;
 var myDegree = {};
 var wizardHistory = ["CPSC340"];
 var page = 0;
-var currentCourse = "CPSC340";
+var currentCourse = null;
 var currentPR = 1;
 var next_pr = 2;
 var autoAdd = { "default": [], "alt_a": [], "alt_b": [] }
@@ -23,6 +23,9 @@ var orderedSet = {
     }
 }
 
+var secondCourseExists = false;
+var secondCourse = null;
+
 $(document).ready(function () {
     $.getJSON("db.json", function (data) {
         db = data;
@@ -37,7 +40,87 @@ $(document).ready(function () {
         updateDropdowns();
         updateCourseList();
     });
+    $("#addToPlanButton").hide();
+    $("#labelForChoosePreReq").hide();
+    $("#resetButton").hide();
 });
+
+function enterKeyInput(e) {
+    if (e.keyCode == 13) {
+	       getCourse();
+    };
+
+};
+
+function showSecondBox() {
+    $("#courseToLookUp2").show();
+    $("#hideSecondBoxButton").show();
+    $("#showSecondBoxButton").hide();
+
+}
+
+function hideSecondBox() {
+    $("#courseToLookUp2").hide();
+    $("#hideSecondBoxButton").hide();
+    $("#showSecondBoxButton").show();
+    $("#courseToLookUp2").val('');
+
+}
+
+function getCourse() {
+	   $.getJSON("db.json", function (data) {
+        db = data;
+
+        var courseEntered = $('#courseToLookUp').val().replace(/ /g, '');
+        console.log(courseEntered);
+        courseEntered = courseEntered.toUpperCase();
+        console.log(courseEntered);
+        var secondCourse = $('#courseToLookUp2').val().replace(/ /g, '');
+        secondCourseEntered = secondCourse.toUpperCase();
+        console.log(secondCourseEntered);
+
+        if (courseEntered != null) {
+            currentCourse = courseEntered;
+            addToMyDegree(courseEntered);
+            addToPlan();
+            parse(db, courseEntered);
+            if (data[courseEntered].prereqs !== null) {
+                $('#courseToLookUp').hide();
+                $("#labelForCourseToLookUp").hide();
+                $("#courseToLookUpButton").hide();
+                $("#introGreeting").hide();
+                $("#showSecondBoxButton").hide();
+                $("#courseToLookUp2").hide();
+                $("#hideSecondBoxButton").hide();
+                updateInstructions();
+                $("#dropdown").html(dropdowns(data[courseEntered].prereqs));
+            } else {
+                $("#dropdown").html("<br>");
+            }
+
+            if (secondCourseEntered != "" && secondCourseEntered != courseEntered) {
+                console.log("second course entered");
+                secondCourseExists = true;
+                secondCourse = secondCourseEntered;
+                addToMyDegree(secondCourseEntered);
+                addToPlan();
+                updateInstructions();
+                $("#dropdown").html(dropdowns(data[courseEntered].prereqs));
+            };
+
+
+
+            //addToMyDegree(courseEntered);
+            //addToPlan();
+            sortCourses();
+            updateCourseList();
+            $("#labelForChoosePreReq").show();
+            $("#addToPlanButton").show();
+            $("#resetButton").show();
+
+        };
+    });
+};
 
 function updateDropdowns() {
     //   console.log("DD SET: " + JSON.stringify(dropDownSet));
@@ -394,7 +477,8 @@ function nextCourse() {
         currentCourse = nc;
         parse(db, currentCourse);
         $("#dropdown").html(dropdowns(db[currentCourse].prereqs));
-    } else {
+    }
+    else {
         alert("You're done!");
     }
 }

@@ -1108,5 +1108,61 @@
         "yr": 1,
         "prereqs": null,
         "coreqs": null
+    },
+    "HEBR101": {
+        "title": "HEBR 101 Elementary Biblical Hebrew Part I",
+        "info": "Introduction to Biblical Hebrew grammar. Includes translation of prose and poetry from the Hebrew Bible.",
+        "credits": 3,
+        "yr": 1,
+        "prereqs": null,
+        "coreqs": null
+    },
+    "HEBR102": {
+        "title": "HEBR 102 Elementary Biblical Hebrew Part II",
+        "info": "A continuation of HEBR 101: Introduction to Biblical Hebrew grammar. Includes translation of prose and poetry from the Hebrew Bible.",
+        "credits": 3,
+        "yr": 1,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "HEBR101"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "HEBR201": {
+        "title": "HEBR 201 Intermediate Biblical Hebrew I",
+        "info": "The second year of Biblical Hebrew with emphasis on rapid reading of poetry and prose along with grammar.",
+        "credits": 3,
+        "yr": 2,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "HEBR102"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "HEBR202": {
+        "title": "HEBR 202 Intermediate Biblical Hebrew II",
+        "info": "The second year of Biblical Hebrew with emphasis on rapid reading of poetry and prose along with grammar.",
+        "credits": 3,
+        "yr": 2,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "HEBR201"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
     }
 }
