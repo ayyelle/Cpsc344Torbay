@@ -1,4 +1,4 @@
-.wizard-div {
+    .wizard-div {
       background: #efefef;
       border-radius: 10px;
       margin: 10px;
@@ -11,16 +11,27 @@
     
     #courseToLookUp2 {
     display: none;
-}
+    }
 
     #hideSecondBoxButton {
     display: none;
-}
+    }
+
     
     .add-btn {
       background-color: #28B0DE;
       color: white;
       border: 0;
+    }
+
+    .add-btn:disabled{
+      background-color: lightgrey;
+      color: grey;
+    }
+
+    .add-btn:disabled:hover{
+            background-color: lightgrey;
+      color: grey;
     }
     
     .add-btn:hover {
@@ -167,4 +178,36 @@
     
     .btn-success {
       border: 0;
+    }
+
+    .or-list {
+      width: 45%;
+      float: left;
+    }
+    #or {
+      font-style: 24px;
+      width: 10%;
+      float:left;
+      margin-top: 10px;
+    }
+    .or-container {
+      border-style: solid;
+      padding: 15px;
+      border-radius: 15px;
+      border-style: solid;
+      border-color: white;
+    }
+    .custom-radio {
+      font-size: 20px;
+      padding:-10px;
+    }
+    #credit-count {
+      background-color:  #28B0DE;
+      padding: 2px 5px 2px 5px;
+      color: white;
+      border-radius: 5px;
+    }
+    hr {
+      border-style: solid;
+      color: black;
     }

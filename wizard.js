@@ -45,6 +45,7 @@ $(document).ready(function () {
     $("#resetButton").hide();
     $("#courseInfoBox").hide();
     $("#courseListBox").hide();
+    $("#addToPlanButton").prop("disabled", true);
 });
 
 function enterKeyInput(e) {
@@ -247,6 +248,11 @@ function updateCourseList() {
         updateSemester(i, "sem2", id2);
     }
     countCredits();
+    if (reqsMet(currentCourse)) {
+        $("#addToPlanButton").prop("disabled", false);
+    } else {
+        $("#addToPlanButton").prop("disabled", true);
+    }
 }
 
 function updateSemester(yrId, semId, id) {
@@ -354,10 +360,7 @@ function getCourseList(yr, sem) {
     var list = "";
     if (orderedSet[yr][sem] !== {}) {
         for (var course in orderedSet[yr][sem]) {
-            list += "<div class='centered'><button class='in-plan plan-btn' onclick=wizardPage('" + course + "')>"
-            if (currentCourse === course) {
-                list += "&#x25ba "
-            }
+            list += "<div class='centered'><button class='in-plan plan-btn' onclick=wizardPage('" + course + "') onmouseover=goToCourse('" + course + "')>"
             list += course + "</button></div>"
         }
     }
@@ -401,15 +404,6 @@ function selectCourse(course, id) {
 function updateDropdown(course, id) {
     $("#" + id + "").html(course + " " + "<span class='caret'></span>");
     $("#" + id + "").data("course", course);
-    /*
-    if (course in myDegree) {
-        $("#" + id).css("background-color", "#28B0DE");
-        $("#" + id).css("color", "white");
-    } else {
-        $("#" + id).css("background-color", "white");
-        $("#" + id).css("color", "black");
-    }
-    */
 }
 
 function removeCourse(course) {
@@ -514,6 +508,7 @@ function dropdown(r, n) {
     if (r[n].or !== null) {
         cl = "alt_b";
         rtn = orDropDowns(r, n, pr_id);
+        // newOrDropDowns(r, n, pr_id);
     }
     else if (r[n].n_of === "one" && r[n].courses.length > 1) {
         dropDownSet[pr_id] = { "options": [] };
@@ -543,10 +538,9 @@ function dropdown(r, n) {
 function orDropDowns(r, n, id) {
     //create dropdowns and course buttons for "OR" prereq selection
     var id_b = "prdrop1b"
-    var rtn = "<div class='radio'><label><input id='alt_a' type='radio' name='optradio' onclick=enable('alt_a')>A</label></div>"
+    var rtn = "<div class='or-list'><h3>A</h3><div class='custom-radio'><input id='alt_a' type='radio' name='optradio' onclick=enable('alt_a')></div>"
     if (r[n].courses.length > 1) {
         dropDownSet[id] = { "options": [] };
-        // console.log("OR DDs: " + id);
         rtn += "<div class='dropdown'><button disabled='true' onmouseover=ddPreviewCourse('" + id + "') class='whiteBtn alt_a' type='button' data-toggle='dropdown'"
             + "id='" + id + "'>"
             + "Choose One <span class='caret'></span>"
@@ -561,12 +555,13 @@ function orDropDowns(r, n, id) {
             dropDownSet[id].options.push(r[n].courses[i]);
         }
     }
-    rtn += "</ul></div>"
-        + "<div class='radio'><label><input id='alt_b' type='radio' onclick=enable('alt_b') name='optradio'>B</label></div>"
+    rtn += "</ul></div></div>"
+        + "<div id='or'><h4>OR</h4></div><div class='or-list'><h3>B</h3><div class='custom-radio'><input id='alt_b' type='radio' onclick=enable('alt_b') name='optradio'></div>"
     //     + dropdowns(r[n].or)
     for (var i = 0; i < r[n].or.length; i++) {
         rtn += orDropDown(r[n].or, i);
     }
+    rtn += "</div>"
     return rtn;
 }
 
