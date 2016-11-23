@@ -48,8 +48,8 @@
                     {
                         "n_of": "all",
                         "courses": [
-                            "CPSC260",
-                            "EECE320"
+                            "EECE320",
+                            "CPSC260"
                         ],
                         "or": null
                     },
@@ -570,7 +570,7 @@
         "title": "STAT 203 Statistical Methods",
         "info": "Organizing, displaying and summarizing data. Inference estimation and testing for elementary probability models. Not for credit towards a B.Sc. (Consult the Credit Exclusion list within the Faculty of Science section in the Calendar.)",
         "credits": 3,
-        "yr": 1,
+        "yr": 2,
         "prereqs": null,
         "coreqs": null
     },
@@ -727,29 +727,6 @@
         ],
         "coreqs": null
     },
-    "MATH101": {
-        "title": "MATH 101 Integral Calculus with Applications to Physical Sciences and Engineering",
-        "info": "The definite integral, integration techniques, applications, modeling, infinite series. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
-        "credits": 3,
-        "yr": 1,
-        "prereqs": [
-            {
-                "n_of": "one",
-                "courses": [
-                    "MATH100",
-                    "MATH102",
-                    "MATH104",
-                    "MATH110",
-                    "MATH111",
-                    "MATH120",
-                    "MATH180",
-                    "MATH184"
-                ],
-                "or": null
-            }
-        ],
-        "coreqs": null
-    },
     "MATH103": {
         "title": "MATH 103 Integral Calculus with Applications to Life Sciences",
         "info": "Antiderivatives and definite integrals, infinite series, applications to probability and dynamical systems. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
@@ -843,14 +820,6 @@
     "MATH111": {
         "title": "MATH 111 Finite Mathematics",
         "info": "Intended for students not majoring in Mathematics or the Sciences who want some exposure to mathematical thinking. Logic, set theory, combinatorics, probability theory, matrix algebra, linear programming, graphs, and networks. This course cannot be taken for credit towards a B.Sc. degree.",
-        "credits": 3,
-        "yr": 1,
-        "prereqs": null,
-        "coreqs": null
-    },
-    "MATH100": {
-        "title": "MATH 100 Differential Calculus with Applications to Physical Sciences and Engineering",
-        "info": "Derivatives of elementary functions. Applications and modeling: graphing, optimization. Consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
         "credits": 3,
         "yr": 1,
         "prereqs": null,
