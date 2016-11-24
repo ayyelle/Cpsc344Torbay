@@ -42,7 +42,8 @@ $(document).ready(function () {
     $("#resetButton").hide();
     $("#courseInfoBox").hide();
     $("#courseListBox").hide();
-    $("#addToPlanButton").prop("disabled", true);
+   // $("#addToPlanButton").prop("disabled", true);
+    $("#outro").hide();
 });
 
 function enterKeyInput(e) {
@@ -452,6 +453,13 @@ function nextCourse() {
     } else {
         updateCourseList();
         alert("You're done!");
+        setOutro("1", "sem1");
+        setOutro("1", "sem2");
+        setOutro("2", "sem1");
+        setOutro("2", "sem2");
+        setOutro("3", "sem1");
+        setOutro("3", "sem2");
+        displayOutro();
     }
 }
 
@@ -605,4 +613,20 @@ function ddPreviewCourse(id) {
     if (course !== undefined) {
         goToCourse(course)
     }
+}
+
+function setOutro(yr, sem) {
+    if(getCourseList(yr, sem) != "") {
+        $("#outyr" + yr + "-" + sem.substr(3)).html(getCourseList(yr, sem));
+    }
+    else {
+        $("#outyr" + yr + "-" + sem.substr(3)).hide();
+    }
+}
+
+function displayOutro() {
+    $("#wizardBox").hide();
+    $("#courseInfoBox").hide();
+    $("#courseListBox").hide();
+    $("#outro").show();
 }

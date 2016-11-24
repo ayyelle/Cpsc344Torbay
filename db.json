@@ -1164,5 +1164,92 @@
             }
         ],
         "coreqs": null
+    },
+    "CPEN221": {
+        "title": "CPSC 221 Principles of Software Construction",
+        "info": "Design, implementation, reasoning about software systems: abstraction and specification of software, testing, verification, abstract data types, object-oriented design, type hierarchies, concurrent software design.",
+        "credits": 4,
+        "yr": 2,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "APSC160"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": null
+    },
+    "PHYS107": {
+        "title": "PHYS 107 Enriched Physics 1",
+        "info": "Classical mechanics including conservation laws, angular momentum of rigid bodies and simple harmonic motion, wave phenomena, with an introduction to special relativity, quantum mechanics, nuclear physics, statistical mechanics and solid state physics. Please consult the Faculty of Science credit exclusion lists: http://www.calendar.ubc.ca/vancouver/index.cfm?tree=12,215,410,414",
+        "credits": 3,
+        "yr": 1,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "PHYS100"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH100",
+                    "MATH102",
+                    "MATH 104",
+                    "MATH 120",
+                    "MATH 180",
+                    "MATH 184"
+                ],
+                "or": null
+            }
+        ]
+    },
+    "PHYS108": {
+        "title": "PHYS 107 Enriched Physics 1",
+        "info": "Electricity and magnetism, electrical circuits, induction, electromagnetic waves, Maxwell's equations and applications. Please consult the Faculty of Science credit exclusion lists: http://www.calendar.ubc.ca/vancouver/index.cfm?tree=12,215,410,414",
+        "credits": 3,
+        "yr": 1,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "PHYS107"
+                ],
+                "or": [
+                    {
+                        "n_of": "one",
+                        "courses": [
+                            "PHYS101"
+                        ],
+                        "or": null
+                    },
+                    {
+                        "n_of": "one",
+                        "courses": [
+                            "PHYS117"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "coreqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH101",
+                    "MATH103",
+                    "MATH105",
+                    "MATH121"
+                ],
+                "or": null
+            }
+        ]
     }
 }
+
