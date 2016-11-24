@@ -6,6 +6,8 @@ var autoAdd = { "default": [], "alt_a": { "all": [], "dropdowns": [] }, "alt_b":
 var fixedCourses = { "CPSC340": true };
 var options = [];
 var dropDownSet = {};
+var secondCourseExists = false;
+var secondCourse = null;
 var orderedSet = {
     "1": {
         "sem1": {},
@@ -21,28 +23,12 @@ var orderedSet = {
     }
 }
 
-var secondCourseExists = false;
-var secondCourse = null;
-
 $(document).ready(function () {
-    $.getJSON("db.json", function (data) {
-        db = data;
-        parse(db, currentCourse);
-        if (data[currentCourse].prereqs !== null) {
-            $("#dropdown").html(dropdowns(data[currentCourse].prereqs));
-        } else {
-            $("#dropdown").html("<br>");
-        }
-        addToMyDegree("CPSC340");
-        updateDropdowns();
-        updateCourseList();
-    });
     $("#addToPlanButton").hide();
     $("#labelForChoosePreReq").hide();
     $("#resetButton").hide();
     $("#courseInfoBox").hide();
     $("#courseListBox").hide();
-    // $("#addToPlanButton").prop("disabled", true);
     $("#outro").hide();
 });
 
@@ -50,7 +36,6 @@ function enterKeyInput(e) {
     if (e.keyCode == 13) {
 	       getCourse();
     };
-
 };
 
 function showSecondBox() {
@@ -453,12 +438,6 @@ function nextCourse() {
         $("#dropdown").html(dropdowns(db[currentCourse].prereqs));
     } else {
         updateCourseList();
-        setOutro("1", "sem1");
-        setOutro("1", "sem2");
-        setOutro("2", "sem1");
-        setOutro("2", "sem2");
-        setOutro("3", "sem1");
-        setOutro("3", "sem2");
         displayOutro();
     }
 }
@@ -616,8 +595,10 @@ function ddPreviewCourse(id) {
 }
 
 function setOutro(yr, sem) {
-    if (getCourseList(yr, sem, false) != "") {
+    if (getCourseList(yr, sem, false) !== "") {
+        console.log(yr + " sem " + sem + "courselist: " + getCourseList(yr, sem, false));
         $("#outyr" + yr + "-" + sem.substr(3)).html(getCourseList(yr, sem, false));
+        $("#outyr" + yr + "-" + sem.substr(3)).show();
     }
     else {
         $("#outyr" + yr + "-" + sem.substr(3)).hide();
@@ -625,6 +606,12 @@ function setOutro(yr, sem) {
 }
 
 function displayOutro() {
+    setOutro("1", "sem1");
+    setOutro("1", "sem2");
+    setOutro("2", "sem1");
+    setOutro("2", "sem2");
+    setOutro("3", "sem1");
+    setOutro("3", "sem2");
     $("#wizardBox").hide();
     $("#courseInfoBox").hide();
     $("#courseListBox").hide();
