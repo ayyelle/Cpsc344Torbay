@@ -6,7 +6,6 @@ var autoAdd = { "default": [], "alt_a": { "all": [], "dropdowns": [] }, "alt_b":
 var fixedCourses = { "CPSC340": true };
 var options = [];
 var dropDownSet = {};
-var secondCourseExists = false;
 var secondCourse = null;
 var orderedSet = {
     "1": {
@@ -83,7 +82,6 @@ function getCourse() {
             }
 
             if (secondCourseEntered != "" && secondCourseEntered != courseEntered) {
-                secondCourseExists = true;
                 secondCourse = secondCourseEntered;
                 addToMyDegree(secondCourseEntered);
                 fixedCourses[secondCourseEntered] = true;
