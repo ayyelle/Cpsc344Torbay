@@ -1,7 +1,7 @@
     .wizard-div {
       background: #efefef;
       border-radius: 10px;
-      margin: 10px;
+      margin: 15px;
       padding: 15px;
     }
     
@@ -15,6 +15,10 @@
 
     #hideSecondBoxButton {
     display: none;
+    }
+    
+    #labelForChoosePreReq {
+      margin-bottom: 15px;
     }
 
     .checked {

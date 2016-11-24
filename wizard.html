@@ -127,13 +127,11 @@
           <div class="panel-heading">
             <h3 class="panel-title">Planner</h3>
           </div>
-          <br>
-
           <div class="panel-body">
-            <!-- Start jumbotron -->
             <div class="centered">
               <h4 id="labelForChoosePreReq">Choose pre-reqs for <strong><span id="currentCourse"></span></strong>:</h4>
             </div>
+            <!-- Start jumbotron -->
             <div class="wizard-div">
               <div class="centered">
                 <div id="introGreeting">
@@ -146,6 +144,9 @@
                 </ul>
               </div>
             </div>
+            <!-- End jumbotron -->
+            <div class="pull-right"><button class="btn-lg add-btn" onclick="addToPlan()" id="addToPlanButton">Continue &#x25ba</button></div>
+            <div class="pull-left"><button class="btn-lg reset-btn" onclick="location.reload()" id="resetButton">Reset</button></div>
             <div class="centered">
               <label for="courseToLookUp" id="labelForCourseToLookUp" class="pull-left"><h4>Course to Look Up:</h4></label>
               <div class="row">
@@ -168,9 +169,6 @@
               <br>
               <button class="btn-lg add-btn" onclick="getCourse()" id="courseToLookUpButton">Get Pre-Reqs</button>
             </div>
-            <!-- End jumbotron -->
-            <div class="pull-right"><button class="btn-lg add-btn" onclick="addToPlan()" id="addToPlanButton">Continue &#x25ba</button></div>
-            <div class="pull-left"><button class="btn-lg reset-btn" onclick="location.reload()" id="resetButton">Reset</button></div>
           </div>
         </div>
       </div>
