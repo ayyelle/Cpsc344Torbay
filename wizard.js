@@ -125,9 +125,9 @@ function countCredits() {
             lower += db[course].credits
         }
     }
-    $("#credit-count").text(upper + lower);
-    $("#upper-cr").text(upper);
-    $("#lower-cr").text(lower);
+    $(".credit-count").text(upper + lower);
+    $(".upper-cr").text(upper);
+    $(".lower-cr").text(lower);
 }
 
 function updateDropdowns() {
@@ -241,7 +241,7 @@ function updateSemester(yrId, semId, id) {
         $(id).prop("hidden", true);
     } else {
         $(id).prop("hidden", false);
-        $(id).html(getCourseList(yrId, semId));
+        $(id).html(getCourseList(yrId, semId, true));
     }
 }
 
@@ -332,13 +332,13 @@ function getPrereq(c, semester) {
     return null;
 }
 
-function getCourseList(yr, sem) {
+function getCourseList(yr, sem, checked) {
     var list = "";
     if (orderedSet[yr][sem] !== {}) {
         for (var course in orderedSet[yr][sem]) {
             list += "<div class='centered'><button class='in-plan plan-btn' onclick=wizardPage('" + course + "') onmouseover=goToCourse('" + course + "')>"
                 + course + "</button>"
-            if (reqsMet(course)) {
+            if (reqsMet(course) && checked) {
                 list += "<span class='checked'>&#x2713</span>"
             }
             list += "</div>"
@@ -616,8 +616,8 @@ function ddPreviewCourse(id) {
 }
 
 function setOutro(yr, sem) {
-    if (getCourseList(yr, sem) != "") {
-        $("#outyr" + yr + "-" + sem.substr(3)).html(getCourseList(yr, sem));
+    if (getCourseList(yr, sem, false) != "") {
+        $("#outyr" + yr + "-" + sem.substr(3)).html(getCourseList(yr, sem, false));
     }
     else {
         $("#outyr" + yr + "-" + sem.substr(3)).hide();
