@@ -1250,5 +1250,36 @@
                 "or": null
             }
         ]
+    },
+
+    "PHYS153": {
+        "title": "PHYS 153 Elements of Physics",
+        "info": "Thermometry, thermal properties of matter, heat, oscillations, waves, sound, wave optics; geometrical optics, elementary electricity and magnetism, simple DC and AC circuits. Please consult the Faculty of Science Credit Exclusion List: www.students.ubc.ca/calendar/index.cfm?tree=12,215,410,414.",
+        "credits": 6,
+        "yr": 1,
+        "prereqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "PHYS100"
+                ],
+                "or": null
+            }
+        ],
+        "coreqs": [
+            {
+                "n_of": "one",
+                "courses": [
+                    "MATH100",
+                    "MATH102",
+                    "MATH104",
+                    "MATH110",
+                    "MATH120",
+                    "MATH180",
+                    "MATH184"
+                ],
+                "or": null
+            }
+        ]
     }
 }
