@@ -42,7 +42,7 @@ $(document).ready(function () {
     $("#resetButton").hide();
     $("#courseInfoBox").hide();
     $("#courseListBox").hide();
-   // $("#addToPlanButton").prop("disabled", true);
+    // $("#addToPlanButton").prop("disabled", true);
     $("#outro").hide();
 });
 
@@ -348,6 +348,7 @@ function getCourseList(yr, sem) {
 }
 
 function wizardPage(course) {
+    hideOutro();
     currentCourse = course;
     parse(db, currentCourse);
     $("#dropdown").html(dropdowns(db[currentCourse].prereqs))
@@ -452,7 +453,6 @@ function nextCourse() {
         $("#dropdown").html(dropdowns(db[currentCourse].prereqs));
     } else {
         updateCourseList();
-        alert("You're done!");
         setOutro("1", "sem1");
         setOutro("1", "sem2");
         setOutro("2", "sem1");
@@ -595,7 +595,7 @@ function enable(en) {
             if ($("#" + autoAdd[dis].dropdowns[i]).data("course") !== undefined) {
                 removeCourseTree($("#" + autoAdd[dis].dropdowns[i]).data("course"));
             }
-         }
+        }
         for (var i = 0; i < autoAdd[en].all.length; i++) {
             addToMyDegree(autoAdd[en].all[i]);
         }
@@ -616,7 +616,7 @@ function ddPreviewCourse(id) {
 }
 
 function setOutro(yr, sem) {
-    if(getCourseList(yr, sem) != "") {
+    if (getCourseList(yr, sem) != "") {
         $("#outyr" + yr + "-" + sem.substr(3)).html(getCourseList(yr, sem));
     }
     else {
@@ -629,4 +629,11 @@ function displayOutro() {
     $("#courseInfoBox").hide();
     $("#courseListBox").hide();
     $("#outro").show();
+}
+
+function hideOutro() {
+    $("#wizardBox").show();
+    $("#courseInfoBox").show();
+    $("#courseListBox").show();
+    $("#outro").hide();
 }
