@@ -17,6 +17,14 @@
     display: none;
     }
     
+    #hideSecondBoxButton:hover {
+    background-color: #a0a0a0;
+    }
+    
+    #showSecondBoxButton:hover {
+      background-color: #a0a0a0;
+    }
+    
     #labelForChoosePreReq {
       margin-bottom: 15px;
     }
